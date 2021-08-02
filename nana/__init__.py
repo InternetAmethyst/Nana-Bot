@@ -42,7 +42,7 @@ USERBOT_VERSION = "3.0"
 ASSISTANT_VERSION = "3.0"
 
 OFFICIAL_BRANCH = ('master')
-REPOSITORY = "https://github.com/legenhand/Dulex-bot.git"
+REPOSITORY = "https://github.com/Deulex-Userbot/Deulex.git"
 RANDOM_STICKERS = ["CAADAgAD6EoAAuCjggf4LTFlHEcvNAI", "CAADAgADf1AAAuCjggfqE-GQnopqyAI",
                    "CAADAgADaV0AAuCjggfi51NV8GUiRwI"]
 
