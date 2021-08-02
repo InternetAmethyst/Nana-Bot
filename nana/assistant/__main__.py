@@ -35,7 +35,7 @@ Convert a text to various style, can be used anywhere!
         if helparg == "createown":
             await message.reply(
                 "Want to create your own Userbot and Assistant?\n[Go here]("
-                "https://github.com/AyraHikari/Nana-TgBot/wiki), read guide carefully.\nIf you want to ask, "
+                "https://github.com/AyraHikari/Dulex-TgBot/wiki), read guide carefully.\nIf you want to ask, "
                 "join our community @AyraSupport")
             return
     try:
@@ -43,7 +43,7 @@ Convert a text to various style, can be used anywhere!
     except ConnectionError:
         me = None
     start_message = f"Hi {OwnerName},\n"
-    start_message += "Nana is Ready at your Service!\n"
+    start_message += "Dulex is Ready at your Service!\n"
     start_message += f"===================\n"
     start_message += "-> Python: `{}`\n".format(python_version())
     if not me:
@@ -82,7 +82,7 @@ async def get_myself(client, message):
     if me.username:
         text += "Username: @{}\n".format(me.username)
     text += "Phone number: `{}`\n".format(me.phone_number)
-    text += "`Nana Version    : v{}`\n".format(USERBOT_VERSION)
+    text += "`Dulex Version    : v{}`\n".format(USERBOT_VERSION)
     text += "`Manager Version : v{}`".format(ASSISTANT_VERSION)
     button = InlineKeyboardMarkup([[InlineKeyboardButton("Hide phone number", callback_data="hide_number")]])
     if me.photo:

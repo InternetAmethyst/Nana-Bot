@@ -61,7 +61,7 @@ RUN apt update && apt upgrade -y && \
 RUN pip3 install --upgrade pip setuptools
 
 # Copy Python Requirements to /root/Dulex
-RUN git clone https://github.com/legenhand/Nana-Bot.git -b herokutest /root/Dulex
+RUN git clone https://github.com/legenhand/Dulex-Bot.git -b herokutest /root/Dulex
 WORKDIR /root/Dulex
 
 #Copy config file to /root/Dulex/Dulex

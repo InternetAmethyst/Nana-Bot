@@ -107,6 +107,6 @@ async def stats(_client, message):
     text += "<b>Message received:</b> `{} messages`\n".format(get_msgc())
 
     uptime = get_readable_time((time.time() - StartTime))
-    text += ("<b>Nana uptime:</b> <code>{}</code>".format(uptime))
+    text += ("<b>Dulex uptime:</b> <code>{}</code>".format(uptime))
     img = await get_theme("stats")
     await setbot.send_photo(Owner, img, caption=text)

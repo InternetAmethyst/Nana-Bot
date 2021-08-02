@@ -9,7 +9,7 @@ from .theme.theme_helper import theme_list, name_theme
 @setbot.on_callback_query(filters.regex("^theme"))
 async def chgtheme(_client, query):
     text = "**⚙ Theme Configuration **\n" \
-           "`Change Your Nana Theme Here! `\n"
+           "`Change Your Dulex Theme Here! `\n"
 
     button = await theme_list()
     await query.message.edit_text(text, reply_markup=button)

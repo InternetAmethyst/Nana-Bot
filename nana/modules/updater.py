@@ -123,7 +123,7 @@ async def updater(client, message):
         return
 
     if not changelog:
-        await message.edit(f'Nana is up-to-date with branch **{brname}**\n')
+        await message.edit(f'Dulex is up-to-date with branch **{brname}**\n')
         return
 
     if len(message.text.split()) != 2:

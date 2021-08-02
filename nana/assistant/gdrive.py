@@ -69,11 +69,11 @@ async def gdrive_helper(_client, message):
         drive = GoogleDrive(gauth)
         file_list = drive.ListFile({'q': "'root' in parents and trashed=false"}).GetList()
         for drivefolders in file_list:
-            if drivefolders['title'] == 'Nana Drive':
+            if drivefolders['title'] == 'Dulex Drive':
                 await message.reply("Authentication successful!\nWelcome back!")
                 return
-        mkdir = drive.CreateFile({'title': 'Nana Drive', "mimeType": "application/vnd.google-apps.folder"})
+        mkdir = drive.CreateFile({'title': 'Dulex Drive', "mimeType": "application/vnd.google-apps.folder"})
         mkdir.Upload()
-        await message.reply("Authentication successful!\nThe 'Nana Drive' folder has been created automatically!")
+        await message.reply("Authentication successful!\nThe 'Dulex Drive' folder has been created automatically!")
     else:
         await message.reply("Invaild args!\nCheck /gdrive for usage guide")

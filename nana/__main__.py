@@ -53,7 +53,7 @@ async def reboot():
     for setting in ALL_SETTINGS:
         imported_module = importlib.import_module("Dulex.assistant." + setting)
         importlib.reload(imported_module)
-    # Nana userbot
+    # Dulex userbot
     for modul in ALL_MODULES:
         imported_module = importlib.import_module("Dulex.modules." + modul)
         if hasattr(imported_module, "__MODULE__") and imported_module.__MODULE__:
@@ -107,7 +107,7 @@ async def start_bot():
     await setbot.start()
     for setting in ALL_SETTINGS:
         imported_module = importlib.import_module("Dulex.assistant." + setting)
-    # Nana userbot
+    # Dulex userbot
     await app.start()
     for modul in ALL_MODULES:
         imported_module = importlib.import_module("Dulex.modules." + modul)

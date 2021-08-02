@@ -1,2 +1,2 @@
-# Logs	# Nana-TgBot
-All logs of your Nana bot will stored here
+# Logs	# Dulex-TgBot
+All logs of your Dulex bot will stored here

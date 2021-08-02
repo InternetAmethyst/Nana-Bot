@@ -31,7 +31,7 @@ async def gen_chlog(repo, diff):
 async def update_changelog(changelog):
     await setbot.send_sticker(Owner, random.choice(RANDOM_STICKERS))
     text = "**Update successfully!**\n"
-    text += f"🎉 Welcome to Nana Bot v{USERBOT_VERSION} & Assistant v{ASSISTANT_VERSION}\n"
+    text += f"🎉 Welcome to Dulex Bot v{USERBOT_VERSION} & Assistant v{ASSISTANT_VERSION}\n"
     text += "\n──「 **Update changelogs** 」──\n"
     text += changelog
     await setbot.send_message(Owner, text)
@@ -64,7 +64,7 @@ async def update_checker():
     changelog = await gen_chlog(repo, f'HEAD..upstream/{brname}')
 
     if not changelog:
-        log.info(f'Nana is up-to-date with branch {brname}')
+        log.info(f'Dulex is up-to-date with branch {brname}')
         return
 
     log.warning(f'New UPDATE available for [{brname}]!')
@@ -141,7 +141,7 @@ if REMINDER_UPDATE and not TEST_DEVELOP:
 
 async def starting_message():
     start_message = f"Hi {OwnerName},\n"
-    start_message += "Nana is Ready at your Service!\n"
+    start_message += "Dulex is Ready at your Service!\n"
     start_message += f"===================\n"
     if DB_AVAILABLE:
         start_message += f"**Group joined:** `{len(get_all_chats())} groups`\n"

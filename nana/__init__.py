@@ -42,19 +42,19 @@ USERBOT_VERSION = "3.0"
 ASSISTANT_VERSION = "3.0"
 
 OFFICIAL_BRANCH = ('master')
-REPOSITORY = "https://github.com/legenhand/Nana-bot.git"
+REPOSITORY = "https://github.com/legenhand/Dulex-bot.git"
 RANDOM_STICKERS = ["CAADAgAD6EoAAuCjggf4LTFlHEcvNAI", "CAADAgADf1AAAuCjggfqE-GQnopqyAI",
                    "CAADAgADaV0AAuCjggfi51NV8GUiRwI"]
 
 BOT_SESSION = "Dulex/session/ManageBot"
-APP_SESSION = "Dulex/session/Nana"
+APP_SESSION = "Dulex/session/Dulex"
 
 # Logger
 logger = get_var('LOGGER', False)
 # Version
 lang_code = get_var('lang_code', "en")
 device_model = platform.machine()
-app_version = "💝 Nana v{}".format(USERBOT_VERSION)
+app_version = "💝 Dulex v{}".format(USERBOT_VERSION)
 system_version = platform.platform()
 
 # Must be filled

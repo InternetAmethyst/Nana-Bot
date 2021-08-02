@@ -41,9 +41,9 @@ Download file from URL, and mirror it to Google Drive
 async def get_drivedir(drive):
     file_list = drive.ListFile({'q': "'root' in parents and trashed=false"}).GetList()
     for drivefolders in file_list:
-        if drivefolders['title'] == 'Nana Drive':
+        if drivefolders['title'] == 'Dulex Drive':
             return drivefolders['id']
-    mkdir = drive.CreateFile({'title': 'Nana Drive', "mimeType": "application/vnd.google-apps.folder"})
+    mkdir = drive.CreateFile({'title': 'Dulex Drive', "mimeType": "application/vnd.google-apps.folder"})
     mkdir.Upload()
 
 

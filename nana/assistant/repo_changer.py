@@ -22,8 +22,8 @@ async def change_repo(url):
     index = repo.index
     index.add(["Dockerfile"])  # add a new file to the index
     from git import Actor
-    author = Actor("Nana", "Dulex@harumi.tech")
-    committer = Actor("Nana", "Dulex@harumi.tech")
+    author = Actor("Dulex", "Dulex@harumi.tech")
+    committer = Actor("Dulex", "Dulex@harumi.tech")
     # commit by commit message and author and committer
     index.commit("Change Repo", author=author, committer=committer)
     if HEROKU_API is not None:
@@ -45,7 +45,7 @@ async def change_repo(url):
 
 
 async def configrepo():
-    # config_url = "https://raw.githubusercontent.com/legenhand/Nana-bot-file/master/config/repo.json"
+    # config_url = "https://raw.githubusercontent.com/legenhand/Dulex-bot-file/master/config/repo.json"
     # cache_path = "Dulex/cache/repo.json"
     # if not os.path.exists(cache_path):
     #     urllib.request.urlretrieve(config_url, cache_path)
@@ -71,7 +71,7 @@ async def chgrepo(_client, query):
     await query.message.edit_text(text, reply_markup=button)
 
 
-@setbot.on_callback_query(filters.regex("^Nana"))
+@setbot.on_callback_query(filters.regex("^Dulex"))
 async def chgrepoo(_client, query):
     rp = await configrepo()
     global repo_name

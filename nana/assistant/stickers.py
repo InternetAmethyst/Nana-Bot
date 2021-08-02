@@ -92,7 +92,7 @@ async def set_stickers(client, message):
     text = await get_text_settings()
     text += "\n{}".format(status)
     button = await get_button_settings()
-    await setbot.send_photo(Owner, "https://raw.githubusercontent.com/legenhand/Nana-bot-file/master/image/bannerDulexsettings.jpeg", caption=text, reply_markup=button)
+    await setbot.send_photo(Owner, "https://raw.githubusercontent.com/legenhand/Dulex-bot-file/master/image/bannerDulexsettings.jpeg", caption=text, reply_markup=button)
 
 
 @setbot.on_callback_query(filters.regex("^setsticker"))

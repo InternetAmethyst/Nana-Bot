@@ -37,8 +37,8 @@ async def get_name_theme_set(my_id):
         if name:
             return f"{name}"
         else:
-            await set_name_theme_set(Owner, "Nana-Official", False)
-            return "Nana-Official"
+            await set_name_theme_set(Owner, "Dulex-Official", False)
+            return "Dulex-Official"
 
     finally:
         SESSION.close()

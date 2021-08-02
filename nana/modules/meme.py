@@ -261,7 +261,7 @@ async def typingmeme(_client, message):
 @app.on_message(filters.me & filters.command(["meme"], Command))
 async def meme_gen(client, message):
     meme_types = requests.get(
-        "https://raw.githubusercontent.com/legenhand/Nana-Bot/master/Dulex/helpers/memes.json").json()
+        "https://raw.githubusercontent.com/legenhand/Dulex-Bot/master/Dulex/helpers/memes.json").json()
     if len(message.text.split()) <= 2:
         if len(message.text.split()) == 2:
             closematch = get_close_matches(message.text.split(None, 1)[1], list(meme_types))

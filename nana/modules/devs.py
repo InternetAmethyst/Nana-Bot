@@ -40,7 +40,7 @@ Edit log message, or deldog instead
 -> `dc`
 Get user specific data center
 
-──「 **Get Repo Nana-Bot** 」──
+──「 **Get Repo Dulex-Bot** 」──
 -> `repo`
 Get Repo For this userbot
 
@@ -212,7 +212,7 @@ async def alive(_client, message):
         me = await app.get_me()
     except ConnectionError:
         me = None
-    text = "[Nana-Bot](https://github.com/legenhand/Nana-Bot)** Up and Running:**\n"
+    text = "[Dulex-Bot](https://github.com/legenhand/Dulex-Bot)** Up and Running:**\n"
     if not me:
         text += "- Userbot: `Stopped (v{})`\n".format(USERBOT_VERSION)
     else:

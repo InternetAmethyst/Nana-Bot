@@ -5,7 +5,7 @@
 # Please see < https://github.com/uaudith/Userge/blob/master/LICENSE >
 #
 # All rights reserved.
-# Ported to Nana by @pokurt
+# Ported to Dulex by @pokurt
 
 import os
 

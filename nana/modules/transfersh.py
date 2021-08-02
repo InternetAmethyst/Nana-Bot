@@ -1,6 +1,6 @@
 # This module created by @legenhand 10/3/2020
 # any error / bugs please report to https://t.me/Dulexbotsupport
-# this module only support to Nana-Bot userbot
+# this module only support to Dulex-Bot userbot
 import datetime
 import os
 
