@@ -4,8 +4,8 @@ from coffeehouse.api import API
 from coffeehouse.lydia import LydiaAI
 from pyrogram import filters
 
-from nana import lydia_api, app, Command
-from nana.helpers.PyroHelpers import ReplyCheck
+from Dulex import lydia_api, app, Command
+from Dulex.helpers.PyroHelpers import ReplyCheck
 
 lydia_status = False
 coffeehouse_api = None

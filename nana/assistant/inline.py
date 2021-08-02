@@ -6,16 +6,16 @@ from uuid import uuid4
 from pyrogram import errors
 from pyrogram.types import InlineQueryResultArticle, InlineKeyboardMarkup, InputTextMessageContent, InlineKeyboardButton
 
-from nana import setbot, Owner, OwnerName, DB_AVAILABLE
-from nana.helpers.msg_types import Types
-from nana.helpers.string import parse_button, build_keyboard
-from nana.modules.pm import welc_txt
-from nana.modules.stylish import text_style_generator, formatting_text_inline, CHAR_OVER, \
+from Dulex import setbot, Owner, OwnerName, DB_AVAILABLE
+from Dulex.helpers.msg_types import Types
+from Dulex.helpers.string import parse_button, build_keyboard
+from Dulex.modules.pm import welc_txt
+from Dulex.modules.stylish import text_style_generator, formatting_text_inline, CHAR_OVER, \
     CHAR_UNDER, CHAR_STRIKE, graffiti, graffitib, CHAR_POINTS, upsidedown_text_inline, smallcaps, superscript, \
     subscript, wide, bubbles, bubblesblack, smothtext, handwriting, handwritingb
 
 if DB_AVAILABLE:
-    from nana.modules.database import notes_db
+    from Dulex.modules.database import notes_db
 
 # TODO: Add more inline query
 # TODO: Wait for pyro update to add more inline query

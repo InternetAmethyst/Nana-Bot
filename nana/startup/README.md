@@ -1,3 +1,3 @@
 # Startup
 What it is?
-This place is for startup function of nana
+This place is for startup function of Dulex

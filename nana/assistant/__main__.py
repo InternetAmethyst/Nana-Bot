@@ -4,13 +4,13 @@ from platform import python_version
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-from nana import app, setbot, AdminSettings, DB_AVAILABLE, USERBOT_VERSION, ASSISTANT_VERSION, BotUsername, Owner, \
+from Dulex import app, setbot, AdminSettings, DB_AVAILABLE, USERBOT_VERSION, ASSISTANT_VERSION, BotUsername, Owner, \
     OwnerName
-from nana.assistant.settings import get_text_settings, get_button_settings
-from nana.assistant.theme.theme_helper import get_theme
+from Dulex.assistant.settings import get_text_settings, get_button_settings
+from Dulex.assistant.theme.theme_helper import get_theme
 
 if DB_AVAILABLE:
-    from nana.modules.database.chats_db import get_all_chats
+    from Dulex.modules.database.chats_db import get_all_chats
 
 
 @setbot.on_message(filters.user(AdminSettings) & filters.command(["start"]))
@@ -124,10 +124,10 @@ async def report_some_errors(client, query):
     app.join_chat("@AyraSupport")
     text = "Hi @AyraHikari, i got an error for you.\nPlease take a look and fix it if possible.\n\nThank you ❤️"
     err = query.message.text
-    open("nana/cache/errors.txt", "w").write(err)
+    open("Dulex/cache/errors.txt", "w").write(err)
     await query.message.edit_reply_markup(reply_markup=None)
-    await app.send_document("AyraSupport", "nana/cache/errors.txt", caption=text)
-    os.remove("nana/cache/errors.txt")
+    await app.send_document("AyraSupport", "Dulex/cache/errors.txt", caption=text)
+    os.remove("Dulex/cache/errors.txt")
     await client.answer_callback_query(query.id, "Report was sent!")
 
 

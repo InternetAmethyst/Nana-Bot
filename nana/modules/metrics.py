@@ -4,7 +4,7 @@ import time
 
 from pyrogram import filters
 
-from nana import Command, app
+from Dulex import Command, app
 
 __MODULE__ = "Metrics"
 __HELP__ = """

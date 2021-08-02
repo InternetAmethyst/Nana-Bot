@@ -5,14 +5,14 @@ from __main__ import HELP_COMMANDS
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-from nana import setbot, AdminSettings, Command, DB_AVAILABLE, StartTime, NANA_IMG, Owner
-from nana.assistant.theme.theme_helper import get_theme
-from nana.helpers.misc import paginate_modules
-from nana.modules.chats import get_msgc
+from Dulex import setbot, AdminSettings, Command, DB_AVAILABLE, StartTime, NANA_IMG, Owner
+from Dulex.assistant.theme.theme_helper import get_theme
+from Dulex.helpers.misc import paginate_modules
+from Dulex.modules.chats import get_msgc
 
 if DB_AVAILABLE:
-    from nana.modules.database.chats_db import get_all_chats
-    from nana.modules.database.notes_db import get_all_selfnotes
+    from Dulex.modules.database.chats_db import get_all_chats
+    from Dulex.modules.database.notes_db import get_all_selfnotes
 
 
 HELP_STRINGS = f"""
@@ -67,7 +67,7 @@ async def help_command(client, message):
             [[InlineKeyboardButton(text="Bantuan", url=f"t.me/{setbot.get_me()['username']}?start=help")]])
         await message.reply("Hubungi saya di PM untuk mendapatkan daftar perintah.", reply_markup=keyboard)
         return
-    #TODO: Add image of nana in NANA_IMG
+    #TODO: Add image of Dulex in NANA_IMG
     await help_parser(client, message.chat.id, HELP_STRINGS)
 
 

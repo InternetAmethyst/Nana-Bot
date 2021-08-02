@@ -7,9 +7,9 @@ from asyncio import sleep
 
 from pyrogram import filters
 
-from nana import setbot, app, Command, Owner
-from nana.helpers.PyroHelpers import ReplyCheck
-from nana.modules.downloads import download_reply_nocall
+from Dulex import setbot, app, Command, Owner
+from Dulex.helpers.PyroHelpers import ReplyCheck
+from Dulex.modules.downloads import download_reply_nocall
 
 __MODULE__ = "Video Note"
 __HELP__ = """

@@ -4,10 +4,10 @@ from asyncio import sleep
 from pyrogram import filters
 from pyrogram.raw import functions
 
-from nana import app, Command, DB_AVAILABLE
+from Dulex import app, Command, DB_AVAILABLE
 
 if DB_AVAILABLE:
-    from nana.modules.database.cloner_db import backup_indentity, restore_identity
+    from Dulex.modules.database.cloner_db import backup_indentity, restore_identity
 
 __MODULE__ = "User"
 __HELP__ = """
@@ -30,7 +30,7 @@ clone user identity with original backup
 revert to original identity
 """
 
-profile_photo = "nana/downloads/pfp.jpg"
+profile_photo = "Dulex/downloads/pfp.jpg"
 
 
 @app.on_message(filters.me & filters.command(["setpfp"], Command))
@@ -94,8 +94,8 @@ async def clone(client, message):
         # Backup my first name, last name, and bio
         backup_indentity(my_self['user']['first_name'], my_self['user']['last_name'], my_self['about'])
     q = await app.get_profile_photos(target)
-    await client.download_media(q[0], file_name="nana/downloads/pp.png")
-    await app.set_profile_photo("nana/downloads/pp.png")
+    await client.download_media(q[0], file_name="Dulex/downloads/pp.png")
+    await app.set_profile_photo("Dulex/downloads/pp.png")
     t = await app.get_users(target)
     t = await client.send(functions.users.GetFullUser(id=await client.resolve_peer(t['id'])))
     p_file = functions.account

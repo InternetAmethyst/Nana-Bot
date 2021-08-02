@@ -7,14 +7,14 @@
     "userbot",
     "plugin",
     "modular",
-    "nana",
+    "Dulex",
     "pyrogram",
     "productivity",
     "testing"
   ],
   "repository": "https://github.com/legenhand/Nana-Bot",
   "website": "sagita.tech",
-  "success_url": "https://t.me/nanabotsupport",
+  "success_url": "https://t.me/Dulexbotsupport",
   "stack": "container",
   "env": {
     "ENV": {

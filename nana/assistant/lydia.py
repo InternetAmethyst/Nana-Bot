@@ -6,8 +6,8 @@ from coffeehouse.api import API
 from coffeehouse.lydia import LydiaAI
 from pyrogram import filters
 
-import nana.modules.meme_strings as meme_strings
-from nana import setbot, AdminSettings, lydia_api
+import Dulex.modules.meme_strings as meme_strings
+from Dulex import setbot, AdminSettings, lydia_api
 
 lydia_status = False
 coffeehouse_api = None

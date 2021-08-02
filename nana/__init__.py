@@ -22,9 +22,9 @@ if ENV:
     TEST_DEVELOP = bool(os.environ.get('TEST_DEVELOP', False))
 else:
     try:
-        from nana.config import Development as Config
+        from Dulex.config import Development as Config
     except ModuleNotFoundError:
-        logging.error("You need to place config.py in nana dir!")
+        logging.error("You need to place config.py in Dulex dir!")
         quit(1)
     TEST_DEVELOP = Config.TEST_MODE
     PM_PERMIT = Config.PM_PERMIT
@@ -46,8 +46,8 @@ REPOSITORY = "https://github.com/legenhand/Nana-bot.git"
 RANDOM_STICKERS = ["CAADAgAD6EoAAuCjggf4LTFlHEcvNAI", "CAADAgADf1AAAuCjggfqE-GQnopqyAI",
                    "CAADAgADaV0AAuCjggfi51NV8GUiRwI"]
 
-BOT_SESSION = "nana/session/ManageBot"
-APP_SESSION = "nana/session/Nana"
+BOT_SESSION = "Dulex/session/ManageBot"
+APP_SESSION = "Dulex/session/Nana"
 
 # Logger
 logger = get_var('LOGGER', False)
@@ -118,14 +118,14 @@ TERMUX_USER = get_var('TERMUX_USER', False)
 NANA_IMG = get_var('NANA_IMG', False)
 PM_PERMIT = get_var('PM_PERMIT', False)
 
-if os.path.exists("nana/logs/error.log"):
-    f = open("nana/logs/error.log", "w")
+if os.path.exists("Dulex/logs/error.log"):
+    f = open("Dulex/logs/error.log", "w")
     f.write("PEAK OF THE LOGS FILE")
 LOG_FORMAT = "[%(asctime)s.%(msecs)03d] %(filename)s:%(lineno)s %(levelname)s: %(message)s"
 logging.basicConfig(level=logging.ERROR,
                     format=LOG_FORMAT,
                     datefmt='%m-%d %H:%M',
-                    filename='nana/logs/error.log',
+                    filename='Dulex/logs/error.log',
                     filemode='w')
 console = logging.StreamHandler()
 console.setLevel(logging.ERROR)
@@ -196,7 +196,7 @@ SESSION = mulaisql()
 # Spotify Startup
 
 # Check if initial token exists and CLIENT_ID_SPOTIFY given
-if not os.path.exists("./nana/session/database_spotify.json") and SPOTIPY_CLIENT_ID:
+if not os.path.exists("./Dulex/session/database_spotify.json") and SPOTIPY_CLIENT_ID:
     INITIAL_BIO = ""
     body = {"client_id": SPOTIPY_CLIENT_ID, "client_secret": SPOTIPY_CLIENT_SECRET,
             "grant_type": "authorization_code", "redirect_uri": "https://example.com/callback",
@@ -205,7 +205,7 @@ if not os.path.exists("./nana/session/database_spotify.json") and SPOTIPY_CLIENT
     save = r.json()
     to_create = {'bio': INITIAL_BIO, 'access_token': save['access_token'], 'refresh_token': save['refresh_token'],
                  'telegram_spam': False, 'spotify_spam': False}
-    with open('./nana/session/database_spotify.json', 'w+') as outfile:
+    with open('./Dulex/session/database_spotify.json', 'w+') as outfile:
         json.dump(to_create, outfile, indent=4, sort_keys=True)
 
 setbot = Client(BOT_SESSION, api_id=api_id, api_hash=api_hash, bot_token=ASSISTANT_BOT_TOKEN, workers=ASSISTANT_WORKER,

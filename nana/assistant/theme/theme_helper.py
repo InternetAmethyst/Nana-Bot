@@ -2,11 +2,11 @@ import asyncio
 
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from nana import Owner
-from nana.__main__ import loop
-from nana.assistant.database.custom_theme_db import get_list_costum_theme, get_custom_theme
-from nana.assistant.database.theme_db import get_name_theme_set, is_custom_theme
-from nana.helpers.aiohttp_helper import AioHttp
+from Dulex import Owner
+from Dulex.__main__ import loop
+from Dulex.assistant.database.custom_theme_db import get_list_costum_theme, get_custom_theme
+from Dulex.assistant.database.theme_db import get_name_theme_set, is_custom_theme
+from Dulex.helpers.aiohttp_helper import AioHttp
 
 cache_theme = {}
 

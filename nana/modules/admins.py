@@ -9,8 +9,8 @@ from pyrogram.errors import (UsernameInvalid,
                              UserIdInvalid)
 from pyrogram.types import ChatPermissions
 
-from nana import app, Command
-from nana.helpers.admincheck import admin_check, is_sudoadmin
+from Dulex import app, Command
+from Dulex.helpers.admincheck import admin_check, is_sudoadmin
 
 __MODULE__ = "Admin"
 __HELP__ = """

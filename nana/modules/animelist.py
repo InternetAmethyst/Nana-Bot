@@ -4,8 +4,8 @@ from jikanpy import Jikan
 from jikanpy.exceptions import APIException
 from pyrogram import filters
 
-from nana import app, Command
-from nana.helpers.string import replace_text
+from Dulex import app, Command
+from Dulex.helpers.string import replace_text
 
 __MODULE__ = "MyAnimeList"
 

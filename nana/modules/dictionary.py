@@ -2,8 +2,8 @@ import asyncio
 
 from pyrogram import filters
 
-from nana import app, Command
-from nana.helpers.aiohttp_helper import AioHttp
+from Dulex import app, Command
+from Dulex.helpers.aiohttp_helper import AioHttp
 
 __HELP__ = """
 ──「 **Dictionary** 」──

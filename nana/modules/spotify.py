@@ -7,7 +7,7 @@ import requests
 from pyrogram import filters
 from pyrogram.errors import FloodWait, AboutTooLong
 
-from nana import app, Command, setbot, Owner, log, SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET
+from Dulex import app, Command, setbot, Owner, log, SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET
 
 __MODULE__ = "spotify"
 __HELP__ = """
@@ -66,7 +66,7 @@ def ms_converter(millis):
 class Database:
     def __init__(self):
         try:
-            self.db = json.load(open("./nana/session/database_spotify.json"))
+            self.db = json.load(open("./Dulex/session/database_spotify.json"))
         except FileNotFoundError:
             print("File Not Found")
 
@@ -98,7 +98,7 @@ class Database:
         return self.db[which + "_spam"]
 
     def save(self):
-        with open('./nana/session/database_spotify.json', 'w') as outfile:
+        with open('./Dulex/session/database_spotify.json', 'w') as outfile:
             json.dump(self.db, outfile, indent=4, sort_keys=True)
 
 

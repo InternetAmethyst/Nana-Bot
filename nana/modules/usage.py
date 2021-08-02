@@ -5,7 +5,7 @@ import heroku3
 import requests
 from pyrogram import filters
 
-from nana import app, Command, HEROKU_API
+from Dulex import app, Command, HEROKU_API
 
 # ================= CONSTANT =================
 Heroku = heroku3.from_key(HEROKU_API)

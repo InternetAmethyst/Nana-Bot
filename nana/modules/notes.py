@@ -1,13 +1,13 @@
 from pyrogram import filters, errors
 from pyrogram.types import InlineKeyboardMarkup
 
-from nana import app, setbot, Command, Owner, BotUsername, DB_AVAILABLE
-from nana.helpers.PyroHelpers import ReplyCheck
-from nana.helpers.msg_types import Types, get_note_type
-from nana.helpers.string import parse_button, build_keyboard
+from Dulex import app, setbot, Command, Owner, BotUsername, DB_AVAILABLE
+from Dulex.helpers.PyroHelpers import ReplyCheck
+from Dulex.helpers.msg_types import Types, get_note_type
+from Dulex.helpers.string import parse_button, build_keyboard
 
 if DB_AVAILABLE:
-    from nana.modules.database import notes_db as db
+    from Dulex.modules.database import notes_db as db
 
 # TODO: Add buttons support in some types
 # TODO: Add group notes, but whats for? since only you can get notes

@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, Boolean, UnicodeText
 
-from nana import BASE, SESSION, Owner
+from Dulex import BASE, SESSION, Owner
 
 
 class AFK(BASE):

@@ -9,9 +9,9 @@ import aiohttp
 import requests
 from pyrogram import filters
 
-import nana.modules.meme_strings as meme_strings
-from nana import app, Command
-from nana.helpers.PyroHelpers import ReplyCheck
+import Dulex.modules.meme_strings as meme_strings
+from Dulex import app, Command
+from Dulex.helpers.PyroHelpers import ReplyCheck
 
 __MODULE__ = "Memes"
 __HELP__ = """
@@ -261,7 +261,7 @@ async def typingmeme(_client, message):
 @app.on_message(filters.me & filters.command(["meme"], Command))
 async def meme_gen(client, message):
     meme_types = requests.get(
-        "https://raw.githubusercontent.com/legenhand/Nana-Bot/master/nana/helpers/memes.json").json()
+        "https://raw.githubusercontent.com/legenhand/Nana-Bot/master/Dulex/helpers/memes.json").json()
     if len(message.text.split()) <= 2:
         if len(message.text.split()) == 2:
             closematch = get_close_matches(message.text.split(None, 1)[1], list(meme_types))
@@ -287,12 +287,12 @@ async def meme_gen(client, message):
         text2 = sptext[1]
     getimg = requests.get("https://memegen.link/{}/{}/{}.jpg?font=impact".format(memetype, text1, text2), stream=True)
     if getimg.status_code == 200:
-        with open("nana/cache/meme.png", 'wb') as f:
+        with open("Dulex/cache/meme.png", 'wb') as f:
             getimg.raw.decode_content = True
             shutil.copyfileobj(getimg.raw, f)
         if message.reply_to_message:
-            await client.send_sticker(message.chat.id, "nana/cache/meme.png",
+            await client.send_sticker(message.chat.id, "Dulex/cache/meme.png",
                                       reply_to_message_id=message.reply_to_message.message_id)
         else:
-            await client.send_sticker(message.chat.id, "nana/cache/meme.png", reply_to_message_id=message.message_id)
-        os.remove("nana/cache/meme.png")
+            await client.send_sticker(message.chat.id, "Dulex/cache/meme.png", reply_to_message_id=message.message_id)
+        os.remove("Dulex/cache/meme.png")

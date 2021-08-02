@@ -60,15 +60,15 @@ RUN apt update && apt upgrade -y && \
 # Pypi package Repo upgrade
 RUN pip3 install --upgrade pip setuptools
 
-# Copy Python Requirements to /root/nana
-RUN git clone https://github.com/legenhand/Nana-Bot.git -b herokutest /root/nana
-WORKDIR /root/nana
+# Copy Python Requirements to /root/Dulex
+RUN git clone https://github.com/legenhand/Nana-Bot.git -b herokutest /root/Dulex
+WORKDIR /root/Dulex
 
-#Copy config file to /root/nana/nana
-COPY ./nana/config.example.py ./nana/config.py* /root/nana/nana/
+#Copy config file to /root/Dulex/Dulex
+COPY ./Dulex/config.example.py ./Dulex/config.py* /root/Dulex/Dulex/
 
-#Copy credentials google drive to /root/nana
-COPY ./README.md ./client_secrets.json* /root/nana/
+#Copy credentials google drive to /root/Dulex
+COPY ./README.md ./client_secrets.json* /root/Dulex/
 
 ENV PATH="/home/userbot/bin:$PATH"
 
@@ -76,4 +76,4 @@ ENV PATH="/home/userbot/bin:$PATH"
 RUN sudo pip3 install -U -r requirements.txt
 
 # Starting Worker
-CMD ["python3","-m","nana"]
+CMD ["python3","-m","Dulex"]

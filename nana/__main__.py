@@ -7,12 +7,12 @@ import traceback
 from pyrogram import idle
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-from nana import app, Owner, log, setbot, get_self, get_bot
-from nana.assistant import ALL_SETTINGS
-from nana.modules import ALL_MODULES
+from Dulex import app, Owner, log, setbot, get_self, get_bot
+from Dulex.assistant import ALL_SETTINGS
+from Dulex.modules import ALL_MODULES
 
 try:
-    from nana import TEST_DEVELOP
+    from Dulex import TEST_DEVELOP
 except ImportError:
     TEST_DEVELOP = False
 
@@ -29,7 +29,7 @@ async def get_runtime():
 async def reload_userbot():
     await app.start()
     for modul in ALL_MODULES:
-        imported_module = importlib.import_module("nana.modules." + modul)
+        imported_module = importlib.import_module("Dulex.modules." + modul)
         importlib.reload(imported_module)
 
 
@@ -40,8 +40,8 @@ async def reinitial_restart():
 
 async def reboot():
     global BOT_RUNTIME, HELP_COMMANDS
-    importlib.reload(importlib.import_module("nana.modules"))
-    importlib.reload(importlib.import_module("nana.assistant"))
+    importlib.reload(importlib.import_module("Dulex.modules"))
+    importlib.reload(importlib.import_module("Dulex.assistant"))
     # await setbot.send_message(Owner, "Bot is restarting...")
     await setbot.restart()
     await app.restart()
@@ -51,11 +51,11 @@ async def reboot():
     HELP_COMMANDS = {}
     # Assistant bot
     for setting in ALL_SETTINGS:
-        imported_module = importlib.import_module("nana.assistant." + setting)
+        imported_module = importlib.import_module("Dulex.assistant." + setting)
         importlib.reload(imported_module)
     # Nana userbot
     for modul in ALL_MODULES:
-        imported_module = importlib.import_module("nana.modules." + modul)
+        imported_module = importlib.import_module("Dulex.modules." + modul)
         if hasattr(imported_module, "__MODULE__") and imported_module.__MODULE__:
             imported_module.__MODULE__ = imported_module.__MODULE__
         if hasattr(imported_module, "__MODULE__") and imported_module.__MODULE__:
@@ -106,11 +106,11 @@ async def start_bot():
     # Assistant bot
     await setbot.start()
     for setting in ALL_SETTINGS:
-        imported_module = importlib.import_module("nana.assistant." + setting)
+        imported_module = importlib.import_module("Dulex.assistant." + setting)
     # Nana userbot
     await app.start()
     for modul in ALL_MODULES:
-        imported_module = importlib.import_module("nana.modules." + modul)
+        imported_module = importlib.import_module("Dulex.modules." + modul)
         if hasattr(imported_module, "__MODULE__") and imported_module.__MODULE__:
             imported_module.__MODULE__ = imported_module.__MODULE__
         if hasattr(imported_module, "__MODULE__") and imported_module.__MODULE__:

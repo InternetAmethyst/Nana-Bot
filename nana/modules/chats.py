@@ -2,10 +2,10 @@ import os
 
 from pyrogram import filters
 
-from nana import app, Command, DB_AVAILABLE
+from Dulex import app, Command, DB_AVAILABLE
 
 if DB_AVAILABLE:
-    from nana.modules.database.chats_db import update_chat, get_all_chats
+    from Dulex.modules.database.chats_db import update_chat, get_all_chats
 
 MESSAGE_RECOUNTER = 0
 
@@ -47,11 +47,11 @@ async def get_chat(client, message):
         else:
             chatfile += "{} - ({})\n".format(chat.chat_name, chat.chat_id)
 
-    with open("nana/cache/chatlist.txt", "w", encoding="utf-8") as writing:
+    with open("Dulex/cache/chatlist.txt", "w", encoding="utf-8") as writing:
         writing.write(str(chatfile))
         writing.close()
 
-    await client.send_document("self", document="nana/cache/chatlist.txt",
+    await client.send_document("self", document="Dulex/cache/chatlist.txt",
                                caption="Here is the chat list that I joined.")
     await message.edit("My chat list exported to my saved messages.")
-    os.remove("nana/cache/chatlist.txt")
+    os.remove("Dulex/cache/chatlist.txt")

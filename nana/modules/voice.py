@@ -4,7 +4,7 @@ import os
 from gtts import gTTS
 from pyrogram import filters
 
-from nana import app, Command
+from Dulex import app, Command
 
 __MODULE__ = "Voice"
 __HELP__ = """
@@ -54,15 +54,15 @@ async def voice(client, message):
     await client.send_chat_action(message.chat.id, "record_audio")
     # noinspection PyUnboundLocalVariable
     tts = gTTS(v_text, lang=lang)
-    tts.save('nana/cache/voice.mp3')
+    tts.save('Dulex/cache/voice.mp3')
     await message.delete()
     if message.reply_to_message:
-        await client.send_voice(message.chat.id, voice="nana/cache/voice.mp3",
+        await client.send_voice(message.chat.id, voice="Dulex/cache/voice.mp3",
                                 reply_to_message_id=message.reply_to_message.message_id)
     else:
-        await client.send_voice(message.chat.id, voice="nana/cache/voice.mp3")
+        await client.send_voice(message.chat.id, voice="Dulex/cache/voice.mp3")
     await client.send_chat_action(message.chat.id, action="cancel")
-    os.remove("nana/cache/voice.mp3")
+    os.remove("Dulex/cache/voice.mp3")
 
 
 @app.on_message(filters.me & filters.command(["voicelang"], Command))

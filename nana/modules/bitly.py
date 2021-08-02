@@ -1,7 +1,7 @@
 from bitlyshortener import Shortener
 from pyrogram import filters
 
-from nana import app, Command, bitly_token
+from Dulex import app, Command, bitly_token
 
 __MODULE__ = "Bitly"
 __HELP__ = """

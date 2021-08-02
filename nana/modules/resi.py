@@ -1,7 +1,7 @@
 import requests
 from pyrogram import filters
 
-from nana import app, Command, BINDERBYTE_API
+from Dulex import app, Command, BINDERBYTE_API
 
 
 @app.on_message(filters.me & filters.command(["lacak"], Command))

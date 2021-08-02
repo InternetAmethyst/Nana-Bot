@@ -6,8 +6,8 @@ import time
 from pyrogram import filters
 from pyrogram.types import ReplyKeyboardMarkup
 
-from nana import setbot, AdminSettings, DB_AVAILABLE, app, Owner
-from nana.assistant.database.stickers_db import set_sticker_set, set_stanim_set
+from Dulex import setbot, AdminSettings, DB_AVAILABLE, app, Owner
+from Dulex.assistant.database.stickers_db import set_sticker_set, set_stanim_set
 from .settings import get_text_settings, get_button_settings
 
 TODEL = {}
@@ -92,7 +92,7 @@ async def set_stickers(client, message):
     text = await get_text_settings()
     text += "\n{}".format(status)
     button = await get_button_settings()
-    await setbot.send_photo(Owner, "https://raw.githubusercontent.com/legenhand/Nana-bot-file/master/image/bannernanasettings.jpeg", caption=text, reply_markup=button)
+    await setbot.send_photo(Owner, "https://raw.githubusercontent.com/legenhand/Nana-bot-file/master/image/bannerDulexsettings.jpeg", caption=text, reply_markup=button)
 
 
 @setbot.on_callback_query(filters.regex("^setsticker"))

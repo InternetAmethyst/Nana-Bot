@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 from pyDownload import Downloader
 from pyrogram import filters
 
-from nana import app, Command
+from Dulex import app, Command
 
 __MODULE__ = "Downloads"
 __HELP__ = """
@@ -51,9 +51,9 @@ androidfilehost.com`
 async def ls(_client, message):
     args = message.text.split(None, 1)
     if len(args) == 2:
-        basepath = "nana/{}".format(args[1])
+        basepath = "Dulex/{}".format(args[1])
     else:
-        basepath = "nana/"
+        basepath = "Dulex/"
     directory = ""
     listfile = ""
     for entry in os.listdir(basepath):
@@ -71,7 +71,7 @@ async def upload_file(client, message):
     if len(args) == 1:
         await message.edit("usage : upload (path)")
         return
-    path = "nana/{}".format(args[1])
+    path = "Dulex/{}".format(args[1])
     try:
         await app.send_document(message.chat.id, path, progress=lambda d, t: asyncio.get_event_loop().create_task(
             progressdl(d, t, message, time.time(), "Uploading...")))
@@ -132,7 +132,7 @@ async def download_url(url, file_name):
         downlaoded += "\n💿 File size: `" + str(file_size) + " Byte`\n"
 
     try:
-        os.rename(downloader.file_name, "nana/downloads/" + file_name)
+        os.rename(downloader.file_name, "Dulex/downloads/" + file_name)
     except OSError:
         return "Failed to download file\nInvaild file name!"
     return downlaoded
@@ -153,7 +153,7 @@ async def download_from_url(_client, message):
         await message.edit("Invaild args given!")
         return
     try:
-        os.listdir("nana/downloads/")
+        os.listdir("Dulex/downloads/")
     except FileNotFoundError:
         await message.edit("Invalid download path in config!")
         return
@@ -502,28 +502,28 @@ def time_formatter(milliseconds: int) -> str:
 async def download_reply_nocall(client, message):
 	if message.reply_to_message.photo:
 		nama = "photo_{}_{}.png".format(message.reply_to_message.photo.file_id, message.reply_to_message.photo.date)
-		await client.download_media(message.reply_to_message.photo, file_name="nana/downloads/" + nama)
+		await client.download_media(message.reply_to_message.photo, file_name="Dulex/downloads/" + nama)
 	elif message.reply_to_message.animation:
 		nama = "giphy_{}-{}.gif".format(message.reply_to_message.animation.date, message.reply_to_message.animation.file_size)
-		await client.download_media(message.reply_to_message.animation, file_name="nana/downloads/" + nama)
+		await client.download_media(message.reply_to_message.animation, file_name="Dulex/downloads/" + nama)
 	elif message.reply_to_message.video:
 		nama = "video_{}-{}.mp4".format(message.reply_to_message.video.date, message.reply_to_message.video.file_size)
-		await client.download_media(message.reply_to_message.video, file_name="nana/downloads/" + nama)
+		await client.download_media(message.reply_to_message.video, file_name="Dulex/downloads/" + nama)
 	elif message.reply_to_message.sticker:
 		nama = "sticker_{}_{}.webp".format(message.reply_to_message.sticker.date, message.reply_to_message.sticker.set_name)
-		await client.download_media(message.reply_to_message.sticker, file_name="nana/downloads/" + nama)
+		await client.download_media(message.reply_to_message.sticker, file_name="Dulex/downloads/" + nama)
 	elif message.reply_to_message.audio:
 		nama = "{}".format(message.reply_to_message.audio.file_name)
-		await client.download_media(message.reply_to_message.audio, file_name="nana/downloads/" + nama)
+		await client.download_media(message.reply_to_message.audio, file_name="Dulex/downloads/" + nama)
 	elif message.reply_to_message.voice:
 		nama = "audio_{}.ogg".format(message.reply_to_message.voice)
-		await client.download_media(message.reply_to_message.voice, file_name="nana/downloads/" + nama)
+		await client.download_media(message.reply_to_message.voice, file_name="Dulex/downloads/" + nama)
 	elif message.reply_to_message.document:
 		nama = "{}".format(message.reply_to_message.document.file_name)
-		await client.download_media(message.reply_to_message.document, file_name="nana/downloads/" + nama)
+		await client.download_media(message.reply_to_message.document, file_name="Dulex/downloads/" + nama)
 	else:
 		return False
-	return "nana/downloads/" + nama
+	return "Dulex/downloads/" + nama
 
 
 async def download_file_from_tg(client, message):
@@ -532,31 +532,31 @@ async def download_file_from_tg(client, message):
     c_time = time.time()
     name = await name_file(client, message)
     if message.reply_to_message.photo:
-        await client.download_media(message.reply_to_message.photo, file_name="nana/downloads/" + name,
+        await client.download_media(message.reply_to_message.photo, file_name="Dulex/downloads/" + name,
                                     progress=lambda d, t: asyncio.get_event_loop().create_task(
                                         progressdl(d, t, message, c_time, "Downloading...")))
     elif message.reply_to_message.animation:
-        await client.download_media(message.reply_to_message.animation, file_name="nana/downloads/" + name,
+        await client.download_media(message.reply_to_message.animation, file_name="Dulex/downloads/" + name,
                                     progress=lambda d, t: asyncio.get_event_loop().create_task(
                                         progressdl(d, t, message, c_time, "Downloading...")))
     elif message.reply_to_message.video:
-        await client.download_media(message.reply_to_message.video, file_name="nana/downloads/" + name,
+        await client.download_media(message.reply_to_message.video, file_name="Dulex/downloads/" + name,
                                     progress=lambda d, t: asyncio.get_event_loop().create_task(
                                         progressdl(d, t, message, c_time, "Downloading...")))
     elif message.reply_to_message.sticker:
-        await client.download_media(message.reply_to_message.sticker, file_name="nana/downloads/" + name,
+        await client.download_media(message.reply_to_message.sticker, file_name="Dulex/downloads/" + name,
                                     progress=lambda d, t: asyncio.get_event_loop().create_task(
                                         progressdl(d, t, message, c_time, "Downloading...")))
     elif message.reply_to_message.audio:
-        await client.download_media(message.reply_to_message.audio, file_name="nana/downloads/" + name,
+        await client.download_media(message.reply_to_message.audio, file_name="Dulex/downloads/" + name,
                                     progress=lambda d, t: asyncio.get_event_loop().create_task(
                                         progressdl(d, t, message, c_time, "Downloading...")))
     elif message.reply_to_message.voice:
-        await client.download_media(message.reply_to_message.voice, file_name="nana/downloads/" + name,
+        await client.download_media(message.reply_to_message.voice, file_name="Dulex/downloads/" + name,
                                     progress=lambda d, t: asyncio.get_event_loop().create_task(
                                         progressdl(d, t, message, c_time, "Downloading...")))
     elif message.reply_to_message.document:
-        await client.download_media(message.reply_to_message.document, file_name="nana/downloads/" + name,
+        await client.download_media(message.reply_to_message.document, file_name="Dulex/downloads/" + name,
                                     progress=lambda d, t: asyncio.get_event_loop().create_task(
                                         progressdl(d, t, message, c_time, "Downloading...")))
     else:
@@ -564,7 +564,7 @@ async def download_file_from_tg(client, message):
         return
     end = int(time.time())
     times = await time_parser(start, end)
-    text = f"**⬇ Downloaded!**\n🗂 File name: `{name}`\n🏷 Saved to: `nana/downloads/`\n⏲ Downloaded in: {times}"
+    text = f"**⬇ Downloaded!**\n🗂 File name: `{name}`\n🏷 Saved to: `Dulex/downloads/`\n⏲ Downloaded in: {times}"
     await message.edit(text)
 
 

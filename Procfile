@@ -1,1 +1,1 @@
-worker: python3 -m nana
+worker: python3 -m Dulex

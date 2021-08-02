@@ -3,8 +3,8 @@ import asyncio
 
 from pyrogram import filters
 
-from nana import Command, app
-from nana.helpers.aiohttp_helper import AioHttp
+from Dulex import Command, app
+from Dulex.helpers.aiohttp_helper import AioHttp
 
 __MODULE__ = "Covid"
 __HELP__ = """

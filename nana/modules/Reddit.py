@@ -1,6 +1,6 @@
 from pyrogram import filters
 
-from nana import app
+from Dulex import app
 
 __MODULE__ = "Reddit"
 __HELP__ = """

@@ -9,7 +9,7 @@ import re
 import requests
 from pyrogram import filters
 
-from nana import app, Command
+from Dulex import app, Command
 
 __MODULE__ = "YTS"
 __HELP__ = """

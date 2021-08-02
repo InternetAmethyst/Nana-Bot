@@ -8,8 +8,8 @@ from time import sleep
 import requests
 from pyrogram import filters
 
-from nana import app, Command
-from nana.helpers.PyroHelpers import ReplyCheck
+from Dulex import app, Command
+from Dulex.helpers.PyroHelpers import ReplyCheck
 
 __MODULE__ = "Carbon API"
 __HELP__ = """

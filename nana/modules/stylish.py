@@ -3,7 +3,7 @@ from html import escape
 
 from pyrogram import filters
 
-from nana import app, Command
+from Dulex import app, Command
 
 __MODULE__ = "Stylish Text"
 __HELP__ = """

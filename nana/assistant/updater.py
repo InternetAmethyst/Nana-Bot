@@ -5,16 +5,16 @@ from git.exc import GitCommandError, NoSuchPathError, InvalidGitRepositoryError
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-from nana import setbot, Owner, USERBOT_VERSION, ASSISTANT_VERSION, log, OFFICIAL_BRANCH, \
+from Dulex import setbot, Owner, USERBOT_VERSION, ASSISTANT_VERSION, log, OFFICIAL_BRANCH, \
     REPOSITORY, RANDOM_STICKERS, REMINDER_UPDATE, TEST_DEVELOP, HEROKU_API, DB_AVAILABLE, OwnerName
-from nana.__main__ import restart_all, loop
-from nana.assistant.theme.theme_helper import get_theme
+from Dulex.__main__ import restart_all, loop
+from Dulex.assistant.theme.theme_helper import get_theme
 
 if DB_AVAILABLE:
     pass
-from nana.modules.chats import get_msgc
+from Dulex.modules.chats import get_msgc
 if DB_AVAILABLE:
-    from nana.modules.database.chats_db import get_all_chats
+    from Dulex.modules.database.chats_db import get_all_chats
 
 
 async def gen_chlog(repo, diff):
@@ -127,9 +127,9 @@ async def update_button(_client, query):
         await query.message.edit_text('Successfully Updated!\nBot is restarting...')
     except GitCommandError:
         repo.git.reset('--hard')
-        repo.git.clean('-fd', 'nana/modules/')
-        repo.git.clean('-fd', 'nana/assistant/')
-        repo.git.clean('-fd', 'nana/helpers/')
+        repo.git.clean('-fd', 'Dulex/modules/')
+        repo.git.clean('-fd', 'Dulex/assistant/')
+        repo.git.clean('-fd', 'Dulex/helpers/')
         await query.message.edit_text('Successfully Force Updated!\nBot is restarting...')
     await update_changelog(changelog)
     await restart_all()

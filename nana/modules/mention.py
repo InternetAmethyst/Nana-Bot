@@ -3,7 +3,7 @@ from functools import partial
 
 from pyrogram import filters
 
-from nana import Command, app
+from Dulex import Command, app
 
 __MODULE__ = "Mention"
 __HELP__ = """

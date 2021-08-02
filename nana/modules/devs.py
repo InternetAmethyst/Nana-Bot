@@ -11,10 +11,10 @@ import requests
 from pyrogram import filters
 from speedtest import Speedtest
 
-from nana import Command, logging, app, DB_AVAILABLE, USERBOT_VERSION, ASSISTANT_VERSION
-from nana.helpers.aiohttp_helper import AioHttp
-from nana.helpers.deldog import deldog
-from nana.helpers.parser import mention_markdown
+from Dulex import Command, logging, app, DB_AVAILABLE, USERBOT_VERSION, ASSISTANT_VERSION
+from Dulex.helpers.aiohttp_helper import AioHttp
+from Dulex.helpers.deldog import deldog
+from Dulex.helpers.parser import mention_markdown
 
 __MODULE__ = "Devs"
 __HELP__ = """
@@ -58,10 +58,10 @@ Send id of what you replied to
 async def stk(chat, photo):
     if "http" in photo:
         r = requests.get(photo, stream=True)
-        with open("nana/cache/stiker.png", "wb") as stk:
+        with open("Dulex/cache/stiker.png", "wb") as stk:
             shutil.copyfileobj(r.raw, stk)
-        await app.send_sticker(chat, "nana/cache/stiker.png")
-        os.remove("nana/cache/stiker.png")
+        await app.send_sticker(chat, "Dulex/cache/stiker.png")
+        os.remove("Dulex/cache/stiker.png")
     else:
         await app.send_sticker(chat, photo)
 
@@ -156,12 +156,12 @@ async def terminal(client, message):
         output = None
     if output:
         if len(output) > 4096:
-            file = open("nana/cache/output.txt", "w+")
+            file = open("Dulex/cache/output.txt", "w+")
             file.write(output)
             file.close()
-            await client.send_document(message.chat.id, "nana/cache/output.txt", reply_to_message_id=message.message_id,
+            await client.send_document(message.chat.id, "Dulex/cache/output.txt", reply_to_message_id=message.message_id,
                                        caption="`Output file`")
-            os.remove("nana/cache/output.txt")
+            os.remove("Dulex/cache/output.txt")
             return
         await message.edit("""**Input:**\n```{}```\n\n**Output:**\n```{}```""".format(teks, output))
     else:
@@ -170,7 +170,7 @@ async def terminal(client, message):
 
 @app.on_message(filters.me & filters.command(["log"], Command))
 async def log(_client, message):
-    f = open("nana/logs/error.log", "r")
+    f = open("Dulex/logs/error.log", "r")
     data = await deldog(message, f.read())
     await message.edit("`Your recent logs stored here : `{}".format(data))
 

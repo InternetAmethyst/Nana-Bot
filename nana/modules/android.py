@@ -3,7 +3,7 @@ from asyncio import sleep
 import requests
 from pyrogram import filters
 
-from nana import app, Command
+from Dulex import app, Command
 
 __MODULE__ = "Device"
 __HELP__ = """

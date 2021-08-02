@@ -6,9 +6,9 @@ from git import Repo
 from git.exc import InvalidGitRepositoryError, GitCommandError, NoSuchPathError
 from pyrogram import filters
 
-from nana import app, Command, OFFICIAL_BRANCH, REPOSITORY, HEROKU_API
-from nana.__main__ import restart_all, except_hook
-from nana.assistant.updater import update_changelog
+from Dulex import app, Command, OFFICIAL_BRANCH, REPOSITORY, HEROKU_API
+from Dulex.__main__ import restart_all, except_hook
+from Dulex.assistant.updater import update_changelog
 
 __MODULE__ = "Updater"
 __HELP__ = """
@@ -34,22 +34,22 @@ async def gen_chlog(repo, diff):
 
 
 async def initial_git(repo):
-    isexist = os.path.exists('nana-old')
+    isexist = os.path.exists('Dulex-old')
     if isexist:
-        shutil.rmtree('nana-old')
-    os.mkdir('nana-old')
-    os.rename('nana', 'nana-old/nana')
-    os.rename('.gitignore', 'nana-old/.gitignore')
-    os.rename('LICENSE', 'nana-old/LICENSE')
-    os.rename('README.md', 'nana-old/README.md')
-    os.rename('requirements.txt', 'nana-old/requirements.txt')
-    os.rename('Procfile', 'nana-old/Procfile')
-    os.rename('runtime.txt', 'nana-old/runtime.txt')
+        shutil.rmtree('Dulex-old')
+    os.mkdir('Dulex-old')
+    os.rename('Dulex', 'Dulex-old/Dulex')
+    os.rename('.gitignore', 'Dulex-old/.gitignore')
+    os.rename('LICENSE', 'Dulex-old/LICENSE')
+    os.rename('README.md', 'Dulex-old/README.md')
+    os.rename('requirements.txt', 'Dulex-old/requirements.txt')
+    os.rename('Procfile', 'Dulex-old/Procfile')
+    os.rename('runtime.txt', 'Dulex-old/runtime.txt')
     update = repo.create_remote('master', REPOSITORY)
     update.pull('master')
-    os.rename('nana-old/nana/config.py', 'nana/config.py')
-    shutil.rmtree('nana/session/')
-    os.rename('nana-old/nana/session/', 'nana/session/')
+    os.rename('Dulex-old/Dulex/config.py', 'Dulex/config.py')
+    shutil.rmtree('Dulex/session/')
+    os.rename('Dulex-old/Dulex/session/', 'Dulex/session/')
 
 
 @app.on_message(filters.me & filters.command(["update"], Command))
@@ -85,7 +85,7 @@ async def updater(client, message):
             await message.edit('Successfully Updated!\nBot is restarting...')
             await update_changelog(
                 "-> **WARNING**: Bot has been created a new git and sync to latest version, your old files is in "
-                "nana-old")
+                "Dulex-old")
             await restart_all()
             return
 
@@ -114,7 +114,7 @@ async def updater(client, message):
             await message.edit('Successfully Updated!\nBot is restarting...')
             await update_changelog(
                 "-> **WARNING**: Bot has been created a new git and sync to latest version, your old files is in "
-                "nana-old")
+                "Dulex-old")
             await restart_all()
             return
         exc_type, exc_obj, exc_tb = sys.exc_info()
@@ -131,12 +131,12 @@ async def updater(client, message):
                         f'\nCHANGELOG:**\n`{changelog}` '
         if len(changelog_str) > 4096:
             await message.edit("`Changelog is too big, view the file to see it.`")
-            file = open("nana/cache/output.txt", "w+")
+            file = open("Dulex/cache/output.txt", "w+")
             file.write(changelog_str)
             file.close()
-            await client.send_document(message.chat.id, "nana/cache/output.txt", reply_to_message_id=message.message_id,
+            await client.send_document(message.chat.id, "Dulex/cache/output.txt", reply_to_message_id=message.message_id,
                                        caption="`Changelog file`")
-            os.remove("nana/cache/output.txt")
+            os.remove("Dulex/cache/output.txt")
         else:
             await message.edit(changelog_str)
         return
@@ -167,9 +167,9 @@ async def updater(client, message):
             await message.edit('Successfully Updated!\nBot is restarting...')
         except GitCommandError:
             repo.git.reset('--hard')
-            repo.git.clean('-fd', 'nana/modules/')
-            repo.git.clean('-fd', 'nana/assistant/')
-            repo.git.clean('-fd', 'nana/helpers/')
+            repo.git.clean('-fd', 'Dulex/modules/')
+            repo.git.clean('-fd', 'Dulex/assistant/')
+            repo.git.clean('-fd', 'Dulex/helpers/')
             await message.edit('Successfully Updated!\nBot is restarting...')
         await update_changelog(changelog)
         await restart_all()

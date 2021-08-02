@@ -6,8 +6,8 @@ from pyrogram.errors import PeerIdInvalid
 from pyrogram.raw import functions
 from pyrogram.types import User
 
-from nana import app, Command
-from nana.helpers.PyroHelpers import ReplyCheck
+from Dulex import app, Command
+from Dulex.helpers.PyroHelpers import ReplyCheck
 
 __MODULE__ = "Whois"
 __HELP__ = """

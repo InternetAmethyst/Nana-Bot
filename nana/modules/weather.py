@@ -5,7 +5,7 @@ from html import escape
 import aiohttp
 from pyrogram import filters
 
-from nana import app, Command
+from Dulex import app, Command
 
 __MODULE__ = "Weather"
 __HELP__ = """

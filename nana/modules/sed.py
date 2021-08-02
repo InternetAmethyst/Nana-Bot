@@ -3,7 +3,7 @@ import sre_constants
 
 from pyrogram import filters
 
-from nana import app
+from Dulex import app
 
 __MODULE__ = "Sed"
 __HELP__ = """

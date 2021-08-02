@@ -4,7 +4,7 @@ import shutil
 import requests
 from pyrogram import filters
 
-from nana import app, Command, thumbnail_API, screenshotlayer_API
+from Dulex import app, Command, thumbnail_API, screenshotlayer_API
 
 __MODULE__ = "Screenshot Website"
 __HELP__ = """
@@ -46,11 +46,11 @@ async def ss_web(client, message):
     if r.status_code != 200:
         await message.edit(r.text, disable_web_page_preview=True)
         return
-    with open("nana/cache/web.png", "wb") as stk:
+    with open("Dulex/cache/web.png", "wb") as stk:
         shutil.copyfileobj(r.raw, stk)
-    await client.send_photo(message.chat.id, photo="nana/cache/web.png", caption=capt,
+    await client.send_photo(message.chat.id, photo="Dulex/cache/web.png", caption=capt,
                             reply_to_message_id=message.message_id)
-    os.remove("nana/cache/web.png")
+    os.remove("Dulex/cache/web.png")
     await client.send_chat_action(message.chat.id, action="cancel")
     message.edit(capt)
 
@@ -96,13 +96,13 @@ async def ss_web(client, message):
         print(err)
         pass
 
-    with open("nana/cache/web.png", "wb") as stk:
+    with open("Dulex/cache/web.png", "wb") as stk:
         for chunk in r:
             stk.write(chunk)
 
-    await client.send_document(message.chat.id, document="nana/cache/web.png", caption=capt,
+    await client.send_document(message.chat.id, document="Dulex/cache/web.png", caption=capt,
                                reply_to_message_id=message.message_id
                                )
-    os.remove("nana/cache/web.png")
+    os.remove("Dulex/cache/web.png")
     await client.send_chat_action(message.chat.id, action="cancel")
     await message.edit(capt)

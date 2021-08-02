@@ -4,8 +4,8 @@ from datetime import datetime
 
 from pyrogram import filters
 
-from nana import Owner, app, Command
-from nana.helpers.admincheck import admin_check
+from Dulex import Owner, app, Command
+from Dulex.helpers.admincheck import admin_check
 
 __MODULE__ = "Purges"
 __HELP__ = """

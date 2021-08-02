@@ -3,11 +3,11 @@ import re
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-from nana import app, setbot, Command, Owner, BotUsername, DB_AVAILABLE, AdminSettings, OwnerName, PM_PERMIT
-from nana.helpers.parser import mention_markdown
+from Dulex import app, setbot, Command, Owner, BotUsername, DB_AVAILABLE, AdminSettings, OwnerName, PM_PERMIT
+from Dulex.helpers.parser import mention_markdown
 
 if DB_AVAILABLE:
-    from nana.modules.database.pm_db import set_whitelist, get_whitelist, set_req, get_req, del_whitelist
+    from Dulex.modules.database.pm_db import set_whitelist, get_whitelist, set_req, get_req, del_whitelist
 
 welc_txt = f"""Hello, I'm {OwnerName}'s Userbot.
 Try contacting me by pressing buttons down bellow"""
@@ -87,7 +87,7 @@ async def pm_button(client, query):
                                     pm_bot_message,
                                     reply_markup=buttons)
             set_req(query.from_user.id, True)
-            from nana.modules.lydia import lydia_status
+            from Dulex.modules.lydia import lydia_status
             if lydia_status:
                 await app.send_message(query.from_user.id,
                                     "During the wait for permission from my master, why do not we have a little chat?")

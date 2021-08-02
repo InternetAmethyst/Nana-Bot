@@ -1,9 +1,9 @@
 {
   "Nana-Theme": {
     "Nana-Official": {
-      "welcome" : "https://raw.githubusercontent.com/legenhand/Nana-bot-file/master/image/welcome_nana_banner.jpeg",
-      "start" : "https://raw.githubusercontent.com/legenhand/Nana-bot-file/master/image/welcome_nana_banner.jpeg",
-      "settings" : "https://raw.githubusercontent.com/legenhand/Nana-bot-file/master/image/bannernanasettings.jpeg",
+      "welcome" : "https://raw.githubusercontent.com/legenhand/Nana-bot-file/master/image/welcome_Dulex_banner.jpeg",
+      "start" : "https://raw.githubusercontent.com/legenhand/Nana-bot-file/master/image/welcome_Dulex_banner.jpeg",
+      "settings" : "https://raw.githubusercontent.com/legenhand/Nana-bot-file/master/image/bannerDulexsettings.jpeg",
       "stats" : "https://raw.githubusercontent.com/legenhand/Nana-bot-file/master/image/statsbanner.jpeg"
     },
     "More-Theme": {

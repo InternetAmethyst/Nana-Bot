@@ -4,7 +4,7 @@ import requests
 from pyrogram import filters
 from typing import List
 
-from nana import app, Owner, Command, StartTime
+from Dulex import app, Owner, Command, StartTime
 
 sites_list = {
     "Telegram": "https://api.telegram.org",

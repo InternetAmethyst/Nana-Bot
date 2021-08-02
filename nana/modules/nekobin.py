@@ -4,8 +4,8 @@ import os
 import aiohttp
 from pyrogram import filters
 
-from nana import Command, app
-from nana.helpers.aiohttp_helper import AioHttp
+from Dulex import Command, app
+from Dulex.helpers.aiohttp_helper import AioHttp
 
 __MODULE__ = "Nekobin"
 __HELP__ = """
@@ -22,7 +22,7 @@ async def paste(client, message):
         text = message.reply_to_message.text
     if message.reply_to_message.document and message.reply_to_message.document.file_size < 2 ** 20 * 10:
         var = os.path.splitext(message.reply_to_message.document.file_name)[1]
-        path = await message.reply_to_message.download("nana/")
+        path = await message.reply_to_message.download("Dulex/")
         with open(path, 'r') as doc:
             text = doc.read()
         os.remove(path)

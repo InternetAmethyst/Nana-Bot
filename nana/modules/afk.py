@@ -3,12 +3,12 @@ import time
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-from nana import app, setbot, Owner, OwnerName, Command, DB_AVAILABLE
-from nana.helpers.msg_types import Types, get_message_type
-from nana.helpers.parser import mention_markdown, escape_markdown
+from Dulex import app, setbot, Owner, OwnerName, Command, DB_AVAILABLE
+from Dulex.helpers.msg_types import Types, get_message_type
+from Dulex.helpers.parser import mention_markdown, escape_markdown
 
 if DB_AVAILABLE:
-    from nana.modules.database.afk_db import set_afk, get_afk
+    from Dulex.modules.database.afk_db import set_afk, get_afk
 
 __MODULE__ = "AFK"
 __HELP__ = """

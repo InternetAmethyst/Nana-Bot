@@ -2,8 +2,8 @@ import html
 
 from pyrogram import filters
 
-from nana import app, Command
-from nana.helpers.parser import mention_html, mention_markdown
+from Dulex import app, Command
+from Dulex.helpers.parser import mention_html, mention_markdown
 
 __MODULE__ = "Admin List"
 __HELP__ = """

@@ -1,7 +1,7 @@
 from pyrogram import filters
 from sqlalchemy import Column, UnicodeText, Integer, Boolean
 
-from nana import BASE, SESSION, Owner, setbot, AdminSettings
+from Dulex import BASE, SESSION, Owner, setbot, AdminSettings
 
 
 class ThemeSet(BASE):

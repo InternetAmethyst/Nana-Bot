@@ -4,10 +4,10 @@ import time
 
 from PIL import Image
 
-from nana import app, setbot, Command, DB_AVAILABLE
+from Dulex import app, setbot, Command, DB_AVAILABLE
 
 if DB_AVAILABLE:
-    from nana.assistant.database.stickers_db import get_sticker_set, get_stanim_set
+    from Dulex.assistant.database.stickers_db import get_sticker_set, get_stanim_set
 
 from pyrogram import filters
 
@@ -52,13 +52,13 @@ async def kang_stickers(client, message):
                                           "pack was not set. To set a sticker pack, type /setanimation and follow "
                                           "setup.")
                 return
-            await client.download_media(message.reply_to_message.sticker, file_name="nana/cache/sticker.tgs")
+            await client.download_media(message.reply_to_message.sticker, file_name="Dulex/cache/sticker.tgs")
         else:
-            await client.download_media(message.reply_to_message.sticker, file_name="nana/cache/sticker.png")
+            await client.download_media(message.reply_to_message.sticker, file_name="Dulex/cache/sticker.png")
     elif message.reply_to_message and message.reply_to_message.photo:
-        await client.download_media(message.reply_to_message.photo, file_name="nana/cache/sticker.png")
+        await client.download_media(message.reply_to_message.photo, file_name="Dulex/cache/sticker.png")
     elif message.reply_to_message and message.reply_to_message.document and message.reply_to_message.document.mime_type == "image/png":
-        await client.download_media(message.reply_to_message.document, file_name="nana/cache/sticker.png")
+        await client.download_media(message.reply_to_message.document, file_name="Dulex/cache/sticker.png")
     else:
         await message.edit(
             "Reply a sticker or photo to kang it!\nCurrent sticker pack is: {}\nCurrent animation pack is: {}".format(
@@ -67,7 +67,7 @@ async def kang_stickers(client, message):
     if not (
                    message.reply_to_message.sticker and message.reply_to_message.sticker.mime_type) == "application/x" \
                                                                                                        "-tgsticker":
-        im = Image.open("nana/cache/sticker.png")
+        im = Image.open("Dulex/cache/sticker.png")
         maxsize = (512, 512)
         if (im.width and im.height) < 512:
             size1 = im.width
@@ -86,7 +86,7 @@ async def kang_stickers(client, message):
             im = im.resize(sizenew)
         else:
             im.thumbnail(maxsize)
-        im.save("nana/cache/sticker.png", 'PNG')
+        im.save("Dulex/cache/sticker.png", 'PNG')
 
     await client.send_message("@Stickers", "/addsticker")
     await client.read_history("@Stickers")
@@ -102,14 +102,14 @@ async def kang_stickers(client, message):
         0].text == "Whoa! That's probably enough stickers for one pack, give it a break. A pack can't have more than " \
                    "120 stickers at the moment.":
         await message.edit("Your sticker pack was full!\nPlease change one from your Assistant")
-        os.remove('nana/cache/sticker.png')
+        os.remove('Dulex/cache/sticker.png')
         return
     if message.reply_to_message.sticker and message.reply_to_message.sticker.mime_type == "application/x-tgsticker":
-        await client.send_document("@Stickers", 'nana/cache/sticker.tgs')
-        os.remove('nana/cache/sticker.tgs')
+        await client.send_document("@Stickers", 'Dulex/cache/sticker.tgs')
+        os.remove('Dulex/cache/sticker.tgs')
     else:
-        await client.send_document("@Stickers", 'nana/cache/sticker.png')
-        os.remove('nana/cache/sticker.png')
+        await client.send_document("@Stickers", 'Dulex/cache/sticker.png')
+        os.remove('Dulex/cache/sticker.png')
     try:
         ic = message.text.split(None, 1)[1]
     except:

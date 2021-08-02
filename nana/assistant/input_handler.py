@@ -2,11 +2,11 @@ import heroku3
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from nana import AdminSettings, setbot, Owner, HEROKU_API, DB_AVAILABLE
-from nana.assistant.database.custom_theme_db import add_custom_theme
-from nana.assistant.database.stickers_db import set_stanim_set, set_sticker_set
-from nana.assistant.settings import get_text_settings, get_button_settings
-from nana.assistant.theme.theme_helper import get_theme
+from Dulex import AdminSettings, setbot, Owner, HEROKU_API, DB_AVAILABLE
+from Dulex.assistant.database.custom_theme_db import add_custom_theme
+from Dulex.assistant.database.stickers_db import set_stanim_set, set_sticker_set
+from Dulex.assistant.settings import get_text_settings, get_button_settings
+from Dulex.assistant.theme.theme_helper import get_theme
 
 temp_input = False
 theme_format = []

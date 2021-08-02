@@ -4,7 +4,7 @@ import shutil
 import requests
 from pyrogram import filters
 
-from nana import app, Command
+from Dulex import app, Command
 
 __MODULE__ = "Uploader image"
 __HELP__ = """
@@ -29,14 +29,14 @@ async def PictureUploader(client, message):
     await message.delete()
     if "http" in photo:
         r = requests.get(photo, stream=True)
-        with open("nana/cache/pic.png", "wb") as stk:
+        with open("Dulex/cache/pic.png", "wb") as stk:
             shutil.copyfileobj(r.raw, stk)
         if message.reply_to_message:
-            await client.send_photo(message.chat.id, "nana/cache/pic.png",
+            await client.send_photo(message.chat.id, "Dulex/cache/pic.png",
                                     reply_to_message_id=message.reply_to_message.message_id)
         else:
-            await client.send_photo(message.chat.id, "nana/cache/pic.png")
-        os.remove("nana/cache/pic.png")
+            await client.send_photo(message.chat.id, "Dulex/cache/pic.png")
+        os.remove("Dulex/cache/pic.png")
     else:
         if message.reply_to_message:
             await client.send_photo(message.chat.id, photo, "",
@@ -54,14 +54,14 @@ async def StickerUploader(client, message):
     await message.delete()
     if "http" in photo:
         r = requests.get(photo, stream=True)
-        with open("nana/cache/stiker.png", "wb") as stk:
+        with open("Dulex/cache/stiker.png", "wb") as stk:
             shutil.copyfileobj(r.raw, stk)
         if message.reply_to_message:
-            await client.send_sticker(message.chat.id, "nana/cache/stiker.png",
+            await client.send_sticker(message.chat.id, "Dulex/cache/stiker.png",
                                       reply_to_message_id=message.reply_to_message.message_id)
         else:
-            await client.send_sticker(message.chat.id, "nana/cache/stiker.png")
-        os.remove("nana/cache/stiker.png")
+            await client.send_sticker(message.chat.id, "Dulex/cache/stiker.png")
+        os.remove("Dulex/cache/stiker.png")
     else:
         if message.reply_to_message:
             await client.send_sticker(message.chat.id, photo, reply_to_message_id=message.reply_to_message.message_id)

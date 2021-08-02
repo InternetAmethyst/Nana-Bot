@@ -13,7 +13,7 @@ from urllib.error import HTTPError
 from pySmartDL import SmartDL
 from pyrogram import filters
 
-from nana import app, Command
+from Dulex import app, Command
 from .downloads import humanbytes
 
 

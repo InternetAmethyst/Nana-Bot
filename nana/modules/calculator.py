@@ -5,7 +5,7 @@ import traceback
 from currency_converter import CurrencyConverter
 from pyrogram import filters
 
-from nana import app, Command, logging
+from Dulex import app, Command, logging
 
 __MODULE__ = "Calculator"
 __HELP__ = """
@@ -53,12 +53,12 @@ async def evaluation(client, message):
         ev = str(eval(q))
         if ev:
             if len(ev) >= 4096:
-                file = open("nana/cache/output.txt", "w+")
+                file = open("Dulex/cache/output.txt", "w+")
                 file.write(ev)
                 file.close()
-                await client.send_file(message.chat.id, "nana/cache/output.txt",
+                await client.send_file(message.chat.id, "Dulex/cache/output.txt",
                                        caption="`Output too large, sending as file`")
-                os.remove("nana/cache/output.txt")
+                os.remove("Dulex/cache/output.txt")
                 return
             else:
                 await message.edit("**Query:**\n{}\n\n**Result:**\n`{}`".format(q, ev))

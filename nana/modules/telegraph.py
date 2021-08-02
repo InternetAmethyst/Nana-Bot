@@ -3,7 +3,7 @@ import os
 from pyrogram import filters
 from telegraph import upload_file
 
-from nana import Command, app
+from Dulex import Command, app
 
 __MODULE__ = "Telegra.ph"
 __HELP__ = """
@@ -33,7 +33,7 @@ async def telegraph(client, message):
                 and replied.document.file_size <= 5242880)):
         await message.edit("not supported!")
         return
-    download_location = await client.download_media(message=message.reply_to_message,file_name='root/nana/')
+    download_location = await client.download_media(message=message.reply_to_message,file_name='root/Dulex/')
     await message.edit("`passing to telegraph...`")
     try:
         response = upload_file(download_location)

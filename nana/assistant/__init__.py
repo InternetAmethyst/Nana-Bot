@@ -1,4 +1,4 @@
-from nana import ASSISTANT_LOAD, ASSISTANT_NOLOAD, log
+from Dulex import ASSISTANT_LOAD, ASSISTANT_NOLOAD, log
 
 
 def __list_all_modules():

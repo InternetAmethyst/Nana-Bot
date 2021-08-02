@@ -5,8 +5,8 @@ from git import Repo
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from nana import HEROKU_API, setbot
-from nana.helpers.aiohttp_helper import AioHttp
+from Dulex import HEROKU_API, setbot
+from Dulex.helpers.aiohttp_helper import AioHttp
 
 repo_name = ""
 repo_docker = ""
@@ -22,8 +22,8 @@ async def change_repo(url):
     index = repo.index
     index.add(["Dockerfile"])  # add a new file to the index
     from git import Actor
-    author = Actor("Nana", "nana@harumi.tech")
-    committer = Actor("Nana", "nana@harumi.tech")
+    author = Actor("Nana", "Dulex@harumi.tech")
+    committer = Actor("Nana", "Dulex@harumi.tech")
     # commit by commit message and author and committer
     index.commit("Change Repo", author=author, committer=committer)
     if HEROKU_API is not None:
@@ -46,10 +46,10 @@ async def change_repo(url):
 
 async def configrepo():
     # config_url = "https://raw.githubusercontent.com/legenhand/Nana-bot-file/master/config/repo.json"
-    # cache_path = "nana/cache/repo.json"
+    # cache_path = "Dulex/cache/repo.json"
     # if not os.path.exists(cache_path):
     #     urllib.request.urlretrieve(config_url, cache_path)
-    # f = open("nana/cache/repo.json")
+    # f = open("Dulex/cache/repo.json")
     # data_repo = json.load(f)
     # f.close()
     # return data_repo

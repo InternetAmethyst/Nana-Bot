@@ -2,9 +2,9 @@ from asyncio import sleep
 
 from pyrogram import filters
 
-from nana import app, Command
-from nana.helpers.aiohttp_helper import AioHttp
-from nana.helpers.string import replace_text
+from Dulex import app, Command
+from Dulex.helpers.aiohttp_helper import AioHttp
+from Dulex.helpers.string import replace_text
 
 __MODULE__ = "Urban Dictionary"
 __HELP__ = """

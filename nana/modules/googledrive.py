@@ -7,9 +7,9 @@ from bs4 import BeautifulSoup
 from pydrive.drive import GoogleDrive
 from pyrogram import filters
 
-from nana import app, setbot, Command, gauth, gdrive_credentials, HEROKU_API
-from nana.helpers.parser import cleanhtml
-from nana.modules.downloads import download_url
+from Dulex import app, setbot, Command, gauth, gdrive_credentials, HEROKU_API
+from Dulex.helpers.parser import cleanhtml
+from Dulex.modules.downloads import download_url
 from .downloads import progressdl
 
 __MODULE__ = "Google Drive"
@@ -82,7 +82,7 @@ async def credentials(_client, message):
 
 @app.on_message(filters.me & filters.command(["gdrive"], Command))
 async def gdrive_stuff(client, message):
-    gauth.LoadCredentialsFile("nana/session/drive")
+    gauth.LoadCredentialsFile("Dulex/session/drive")
     if gauth.credentials is None:
         if HEROKU_API:
             if gdrive_credentials:
@@ -116,7 +116,7 @@ async def gdrive_stuff(client, message):
                                       "Hello, look like you're not logged in to google drive :)\nI can help you to "
                                       "login.\n\n**To login Google Drive**\n1. `/gdrive` to get login URL\n2. After "
                                       "you're logged in, copy your Token.\n3. `/gdrive (token)` without `(` or `)` to "
-                                      "login, and your session will saved to `nana/session/drive`.\n\nDon't share your "
+                                      "login, and your session will saved to `Dulex/session/drive`.\n\nDon't share your "
                                       "session to someone, else they will hack your google drive account!")
         return
     elif gauth.access_token_expired:
@@ -145,13 +145,13 @@ async def gdrive_stuff(client, message):
         download = drive.CreateFile({'id': driveid})
         download.GetContentFile(filename)
         try:
-            os.rename(filename, "nana/downloads/" + filename.replace(' ', '_'))
+            os.rename(filename, "Dulex/downloads/" + filename.replace(' ', '_'))
         except FileExistsError:
-            os.rename(filename, "nana/downloads/" + filename.replace(' ', '_') + ".2")
-        await message.edit("Downloaded!\nFile saved to `{}`".format("nana/downloads/" + filename.replace(' ', '_')))
+            os.rename(filename, "Dulex/downloads/" + filename.replace(' ', '_') + ".2")
+        await message.edit("Downloaded!\nFile saved to `{}`".format("Dulex/downloads/" + filename.replace(' ', '_')))
     elif len(message.text.split()) == 3 and message.text.split()[1] == "upload":
         filerealname = message.text.split()[2].split(None, 1)[0]
-        filename = "nana/downloads/{}".format(filerealname.replace(' ', '_'))
+        filename = "Dulex/downloads/{}".format(filerealname.replace(' ', '_'))
         checkfile = os.path.isfile(filename)
         if not checkfile:
             await message.edit("File `{}` was not found!".format(filerealname))
@@ -190,53 +190,53 @@ async def gdrive_stuff(client, message):
             c_time = time.time()
             if message.reply_to_message.photo:
                 nama = "photo_{}.png".format(message.reply_to_message.photo.date)
-                await client.download_media(message.reply_to_message.photo, file_name="nana/downloads/" + nama,
+                await client.download_media(message.reply_to_message.photo, file_name="Dulex/downloads/" + nama,
                                             progress=lambda d, t: asyncio.get_event_loop().create_task(
                                                 progressdl(d, t, message, c_time, "Downloading...")))
             elif message.reply_to_message.animation:
                 nama = "giphy_{}-{}.gif".format(message.reply_to_message.animation.date,
                                                 message.reply_to_message.animation.file_size)
-                await client.download_media(message.reply_to_message.animation, file_name="nana/downloads/" + nama,
+                await client.download_media(message.reply_to_message.animation, file_name="Dulex/downloads/" + nama,
                                             progress=lambda d, t: asyncio.get_event_loop().create_task(
                                                 progressdl(d, t, message, c_time, "Downloading...")))
             elif message.reply_to_message.video:
                 nama = "video_{}-{}.mp4".format(message.reply_to_message.video.date,
                                                 message.reply_to_message.video.file_size)
-                await client.download_media(message.reply_to_message.video, file_name="nana/downloads/" + nama,
+                await client.download_media(message.reply_to_message.video, file_name="Dulex/downloads/" + nama,
                                             progress=lambda d, t: asyncio.get_event_loop().create_task(
                                                 progressdl(d, t, message, c_time, "Downloading...")))
             elif message.reply_to_message.sticker:
                 nama = "sticker_{}_{}.webp".format(message.reply_to_message.sticker.date,
                                                    message.reply_to_message.sticker.set_name)
-                await client.download_media(message.reply_to_message.sticker, file_name="nana/downloads/" + nama,
+                await client.download_media(message.reply_to_message.sticker, file_name="Dulex/downloads/" + nama,
                                             progress=lambda d, t: asyncio.get_event_loop().create_task(
                                                 progressdl(d, t, message, c_time, "Downloading...")))
             elif message.reply_to_message.audio:
                 nama = "audio_{}.mp3".format(message.reply_to_message.audio.date)
-                await client.download_media(message.reply_to_message.audio, file_name="nana/downloads/" + nama,
+                await client.download_media(message.reply_to_message.audio, file_name="Dulex/downloads/" + nama,
                                             progress=lambda d, t: asyncio.get_event_loop().create_task(
                                                 progressdl(d, t, message, c_time, "Downloading...")))
             elif message.reply_to_message.voice:
                 nama = "audio_{}.ogg".format(message.reply_to_message.voice.date)
-                await client.download_media(message.reply_to_message.voice, file_name="nana/downloads/" + nama,
+                await client.download_media(message.reply_to_message.voice, file_name="Dulex/downloads/" + nama,
                                             progress=lambda d, t: asyncio.get_event_loop().create_task(
                                                 progressdl(d, t, message, c_time, "Downloading...")))
             elif message.reply_to_message.document:
                 nama = "{}".format(message.reply_to_message.document.file_name)
-                await client.download_media(message.reply_to_message.document, file_name="nana/downloads/" + nama,
+                await client.download_media(message.reply_to_message.document, file_name="Dulex/downloads/" + nama,
                                             progress=lambda d, t: asyncio.get_event_loop().create_task(
                                                 progressdl(d, t, message, c_time, "Downloading...")))
             else:
                 await message.edit("Unknown file!")
                 return
             upload = drive.CreateFile({"parents": [{"kind": "drive#fileLink", "id": drive_dir}], 'title': nama})
-            upload.SetContentFile("nana/downloads/" + nama)
+            upload.SetContentFile("Dulex/downloads/" + nama)
             upload.Upload()
             upload.InsertPermission({'type': 'anyone', 'value': 'anyone', 'role': 'reader'})
             await message.edit(
                 "Done!\nDownload link: [{}]({})\nDirect download link: [{}]({})".format(nama, upload['alternateLink'],
                                                                                         nama, upload['downloadUrl']))
-            os.remove("nana/downloads/" + nama)
+            os.remove("Dulex/downloads/" + nama)
         else:
             await message.edit("Reply document to mirror it to gdrive")
     elif len(message.text.split()) == 3 and message.text.split()[1] == "urlmirror":
@@ -249,13 +249,13 @@ async def gdrive_stuff(client, message):
             return
         await message.edit(f"Downloaded with {time_dl}.\nNow uploading...")
         upload = drive.CreateFile({"parents": [{"kind": "drive#fileLink", "id": drive_dir}], 'title': nama})
-        upload.SetContentFile("nana/downloads/" + nama)
+        upload.SetContentFile("Dulex/downloads/" + nama)
         upload.Upload()
         upload.InsertPermission({'type': 'anyone', 'value': 'anyone', 'role': 'reader'})
         await message.edit(
             "Done!\nDownload link: [{}]({})\nDirect download link: [{}]({})".format(nama, upload['alternateLink'], nama,
                                                                                     upload['downloadUrl']))
-        os.remove("nana/downloads/" + nama)
+        os.remove("Dulex/downloads/" + nama)
     else:
         await message.edit(
             "Usage:\n-> `gdrive download <url/gid>`\n-> `gdrive upload <file>`\n-> `gdrive mirror <url/gid>`\n\nFor "

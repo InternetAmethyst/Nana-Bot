@@ -1,7 +1,7 @@
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from nana import setbot, Owner
+from Dulex import setbot, Owner
 from .database.theme_db import set_name_theme_set
 from .theme.theme_helper import theme_list, name_theme
 

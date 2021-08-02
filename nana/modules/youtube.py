@@ -13,9 +13,9 @@ from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pytube import YouTube
 
-from nana import app, setbot, Command
-from nana.helpers.parser import escape_markdown
-from nana.modules.downloads import download_url
+from Dulex import app, setbot, Command
+from Dulex.helpers.parser import escape_markdown
+from Dulex.modules.downloads import download_url
 
 __MODULE__ = "YouTube"
 __HELP__ = """
@@ -81,13 +81,13 @@ async def youtube_download(_client, message):
 		text = "🎬 **Title:** [{}]({})\n".format(escape_markdown(yt.title), link)
 		status = "**Downloading video...**\n"
 		await message.edit(status + text, disable_web_page_preview=True)
-		YouTube(link).streams.first().download('nana/downloads', filename="tempvid")
+		YouTube(link).streams.first().download('Dulex/downloads', filename="tempvid")
 		status = "**Uploading File To Telegram...**\n"
 		await message.edit(status + text, disable_web_page_preview=True)
-		await app.send_video(message.chat.id, video="nana/downloads/tempvid.mp4")
+		await app.send_video(message.chat.id, video="Dulex/downloads/tempvid.mp4")
 		status = "**Removing Temp File...**"
 		await message.edit(status)
-		os.remove('nana/downloads/tempvid.mp4')
+		os.remove('Dulex/downloads/tempvid.mp4')
 		status = "** Done ✔️✔️**\n"
 		await message.edit(status + text, disable_web_page_preview=True)
 
@@ -99,13 +99,13 @@ async def youtube_download(_client, message):
 		status = "**Downloading video...**\n"
 		await message.edit(status + text, disable_web_page_preview=True)
 		stream = yt.streams.filter(file_extension='mp4').filter(resolution="{}".format(reso)).first()
-		stream.download('nana/downloads', filename="tempvid")
+		stream.download('Dulex/downloads', filename="tempvid")
 		status = "**Uploading File To Telegram...**\n"
 		await message.edit(status + text, disable_web_page_preview=True)
-		await app.send_video(message.chat.id, video="nana/downloads/tempvid.mp4")
+		await app.send_video(message.chat.id, video="Dulex/downloads/tempvid.mp4")
 		status = "**Removing Temp File...**"
 		await message.edit(status)
-		os.remove('nana/downloads/tempvid.mp4')
+		os.remove('Dulex/downloads/tempvid.mp4')
 		status = "**Done ✔️✔️**\n"
 		await message.edit(status + text, disable_web_page_preview=True)
 		return
@@ -151,13 +151,13 @@ async def youtube_music(_client, message):
 							avthumb = False
 		if r.status_code == 200:
 			avthumb = True
-			with open("nana/cache/thumb.jpg", "wb") as stk:
+			with open("Dulex/cache/thumb.jpg", "wb") as stk:
 				shutil.copyfileobj(r.raw, stk)
 		try:
-			os.remove("nana/downloads/{}".format(origtitle))
+			os.remove("Dulex/downloads/{}".format(origtitle))
 		except FileNotFoundError:
 			pass
-		# music.download(filepath="nana/downloads/{}".format(origtitle))
+		# music.download(filepath="Dulex/downloads/{}".format(origtitle))
 		if "manifest.googlevideo.com" in music.url:
 			download = await download_url(music._info['fragment_base_url'], origtitle)
 		else:
@@ -172,33 +172,33 @@ async def youtube_music(_client, message):
 			if "The system cannot find the file specified" in str(err) or "No such file or directory" in str(err):
 				await message.edit("You need to install ffmpeg first!\nCheck your assistant for more information!")
 				await setbot.send_message(message.from_user.id,
-										"Hello 🙂\nYou need to install ffmpeg to make audio works better, here is guide how to install it:\n\n**If you're using linux**, go to your terminal, type:\n`sudo apt install ffmpeg`\n\n**If you're using Windows**, download ffmpeg here:\n`https://ffmpeg.zeranoe.com/builds/`\nAnd then extract (if was archive), and place ffmpeg.exe to workdir (in current dir)\n\n**If you're using heroku**, type this in your workdir:\n`heroku buildpacks:add https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git`\nOr if you not using heroku term, follow this guide:\n1. Go to heroku.com\n2. Go to your app in heroku\n3. Change tabs/click Settings, then search for Buildpacks text\n4. Click button Add build pack, then type `https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest`\n5. Click Save changes, and you need to rebuild your heroku app to take changes!\n\nNeed help?\nGo @nanabotsupport and ask there")
+										"Hello 🙂\nYou need to install ffmpeg to make audio works better, here is guide how to install it:\n\n**If you're using linux**, go to your terminal, type:\n`sudo apt install ffmpeg`\n\n**If you're using Windows**, download ffmpeg here:\n`https://ffmpeg.zeranoe.com/builds/`\nAnd then extract (if was archive), and place ffmpeg.exe to workdir (in current dir)\n\n**If you're using heroku**, type this in your workdir:\n`heroku buildpacks:add https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git`\nOr if you not using heroku term, follow this guide:\n1. Go to heroku.com\n2. Go to your app in heroku\n3. Change tabs/click Settings, then search for Buildpacks text\n4. Click button Add build pack, then type `https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest`\n5. Click Save changes, and you need to rebuild your heroku app to take changes!\n\nNeed help?\nGo @Dulexbotsupport and ask there")
 				return
 		if avthumb:
 			os.system(
-				f'ffmpeg -loglevel panic -i "nana/downloads/{origtitle}" -i "nana/cache/thumb.jpg" -map 0:0 -map 1:0 -c copy -id3v2_version 3 -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (Front)" -metadata title="{music.title}" -metadata author="{video.author}" -metadata album="{video.author}" -metadata album_artist="{video.author}" -metadata genre="{video._category}" -metadata date="{musicdate}" -acodec libmp3lame -aq 4 -y "nana/downloads/{musictitle}.mp3"')
+				f'ffmpeg -loglevel panic -i "Dulex/downloads/{origtitle}" -i "Dulex/cache/thumb.jpg" -map 0:0 -map 1:0 -c copy -id3v2_version 3 -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (Front)" -metadata title="{music.title}" -metadata author="{video.author}" -metadata album="{video.author}" -metadata album_artist="{video.author}" -metadata genre="{video._category}" -metadata date="{musicdate}" -acodec libmp3lame -aq 4 -y "Dulex/downloads/{musictitle}.mp3"')
 		else:
 			os.system(
-				f'ffmpeg -loglevel panic -i "nana/downloads/{origtitle}" -metadata title="{music.title}" -metadata author="{video.author}" -metadata album="{video.author}" -metadata album_artist="{video.author}" -metadata genre="{video._category}" -metadata date="{musicdate}" -acodec libmp3lame -aq 4 -y "nana/downloads/{musictitle}.mp3"')
+				f'ffmpeg -loglevel panic -i "Dulex/downloads/{origtitle}" -metadata title="{music.title}" -metadata author="{video.author}" -metadata album="{video.author}" -metadata album_artist="{video.author}" -metadata genre="{video._category}" -metadata date="{musicdate}" -acodec libmp3lame -aq 4 -y "Dulex/downloads/{musictitle}.mp3"')
 		try:
-			os.remove("nana/downloads/{}".format(origtitle))
+			os.remove("Dulex/downloads/{}".format(origtitle))
 		except FileNotFoundError:
 			pass
 		titletext = "**Uploading...**\n"
 		await message.edit(titletext + text, disable_web_page_preview=False)
 		getprev = requests.get(video.thumb, stream=True)
-		with open("nana/cache/prev.jpg", "wb") as stk:
+		with open("Dulex/cache/prev.jpg", "wb") as stk:
 			shutil.copyfileobj(getprev.raw, stk)
-		await app.send_audio(message.chat.id, audio="nana/downloads/{}.mp3".format(musictitle),
-							thumb="nana/cache/prev.jpg", title=music.title, caption="🕦 `{}`".format(video.duration),
+		await app.send_audio(message.chat.id, audio="Dulex/downloads/{}.mp3".format(musictitle),
+							thumb="Dulex/cache/prev.jpg", title=music.title, caption="🕦 `{}`".format(video.duration),
 							reply_to_message_id=message.message_id
 						)
 		try:
-			os.remove("nana/cache/prev.jpg")
+			os.remove("Dulex/cache/prev.jpg")
 		except FileNotFoundError:
 			pass
 		try:
-			os.remove("nana/cache/thumb.jpg")
+			os.remove("Dulex/cache/thumb.jpg")
 		except FileNotFoundError:
 			pass
 		titletext = "**Done! 🤗**\n"

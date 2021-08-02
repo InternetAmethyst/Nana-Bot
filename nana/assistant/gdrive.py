@@ -4,7 +4,7 @@ import pydrive
 from pydrive.drive import GoogleDrive
 from pyrogram import filters
 
-from nana import setbot, AdminSettings, gauth, gdrive_credentials, HEROKU_API
+from Dulex import setbot, AdminSettings, gauth, gdrive_credentials, HEROKU_API
 
 
 @setbot.on_message(filters.user(AdminSettings) & filters.command(["gdrive"]))
@@ -41,7 +41,7 @@ async def gdrive_helper(_client, message):
                 "that, you can go next guide by type /gdrive")
             return
 
-        gauth.LoadCredentialsFile("nana/session/drive")
+        gauth.LoadCredentialsFile("Dulex/session/drive")
         if gauth.credentials is None:
             try:
                 authurl = gauth.GetAuthUrl()
@@ -57,7 +57,7 @@ async def gdrive_helper(_client, message):
             return
         await message.reply("You're already logged in!\nTo logout type `/gdrive logout`")
     elif len(message.text.split()) == 2 and message.text.split()[1] == "logout":
-        os.remove("nana/session/drive")
+        os.remove("Dulex/session/drive")
         await message.reply("You have logged out of your account!\nTo login again, just type /gdrive")
     elif len(message.text.split()) == 2:
         try:
@@ -65,7 +65,7 @@ async def gdrive_helper(_client, message):
         except pydrive.auth.AuthenticationError:
             await message.reply("Your Authentication code is Wrong!")
             return
-        gauth.SaveCredentialsFile("nana/session/drive")
+        gauth.SaveCredentialsFile("Dulex/session/drive")
         drive = GoogleDrive(gauth)
         file_list = drive.ListFile({'q': "'root' in parents and trashed=false"}).GetList()
         for drivefolders in file_list:

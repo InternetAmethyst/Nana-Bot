@@ -4,7 +4,7 @@ class Config(object):
 	# Register here: https://my.telegram.org/apps
 	api_id = 123
 	api_hash = ""
-	DB_URI = "postgres://nanauser:nanapw@localhost:5432/nanadb"  # Your database URL
+	DB_URI = "postgres://Dulexuser:Dulexpw@localhost:5432/Dulexdb"  # Your database URL
 	PM_PERMIT = True
 	# Version
 	lang_code = "en"  # Your language code

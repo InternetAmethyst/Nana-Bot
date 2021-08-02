@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, UnicodeText
 
-from nana import BASE, SESSION
+from Dulex import BASE, SESSION
 
 
 class MyChats(BASE):

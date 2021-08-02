@@ -2,8 +2,8 @@ import threading
 
 from sqlalchemy import Column, UnicodeText, Integer
 
-from nana import BASE, SESSION
-from nana.helpers.msg_types import Types
+from Dulex import BASE, SESSION
+from Dulex.helpers.msg_types import Types
 
 
 class SelfNotes(BASE):

@@ -11,8 +11,8 @@ from bs4 import BeautifulSoup
 from pyrogram import filters
 from typing import Tuple, Optional
 
-from nana import app, Command, logging
-from nana.helpers.PyroHelpers import ReplyCheck
+from Dulex import app, Command, logging
+from Dulex.helpers.PyroHelpers import ReplyCheck
 
 __MODULE__ = "Reverse Search"
 __HELP__ = """
@@ -28,7 +28,7 @@ Anime reverse search any supported media by tracemoe
 
 """
 
-screen_shot = "nana/downloads/"
+screen_shot = "Dulex/downloads/"
 
 _LOG = logging.getLogger(__name__)
 
@@ -141,8 +141,8 @@ async def tracemoe_rs(client, message):
             dis_loc = img_file
         if message_.video:
             nama = "video_{}-{}.mp4".format(message.reply_to_message.video.date, message.reply_to_message.video.file_size)
-            await client.download_media(message.reply_to_message.video, file_name="nana/downloads/" + nama)
-            dis_loc = "nana/downloads/" + nama
+            await client.download_media(message.reply_to_message.video, file_name="Dulex/downloads/" + nama)
+            dis_loc = "Dulex/downloads/" + nama
             img_file = os.path.join(screen_shot, "grs.jpg")
             await take_screen_shot(dis_loc, 0, img_file)
             if not os.path.lexists(img_file):

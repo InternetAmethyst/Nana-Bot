@@ -1,7 +1,7 @@
 from googletrans import Translator
 from pyrogram import filters
 
-from nana import app, Command
+from Dulex import app, Command
 
 trl = Translator()
 

@@ -1,5 +1,5 @@
 # This module created by @legenhand 10/3/2020
-# any error / bugs please report to https://t.me/nanabotsupport
+# any error / bugs please report to https://t.me/Dulexbotsupport
 # this module only support to Nana-Bot userbot
 import datetime
 import os
@@ -7,7 +7,7 @@ import os
 import pycurl
 from pyrogram import filters
 
-from nana import app, Command, log
+from Dulex import app, Command, log
 from .downloads import download_file_from_tg, name_file, humanbytes
 
 __MODULE__ = "transfer sh"
@@ -34,11 +34,11 @@ async def tfsh(client, message):
     else:
         name_file_upload = name
     name_file_upload.encode('ascii', 'ignore')
-    os.rename(r'nana/downloads/{}'.format(name), r'nana/downloads/{}'.format(name_file_upload))
+    os.rename(r'Dulex/downloads/{}'.format(name), r'Dulex/downloads/{}'.format(name_file_upload))
     print(name_file_upload)
     await message.edit(
-        await send_to_transfersh("nana/downloads/{}".format(name_file_upload), message, name_file_upload))
-    os.remove("nana/downloads/{}".format(name_file_upload))
+        await send_to_transfersh("Dulex/downloads/{}".format(name_file_upload), message, name_file_upload))
+    os.remove("Dulex/downloads/{}".format(name_file_upload))
     return
 
 

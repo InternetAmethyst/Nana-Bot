@@ -3,8 +3,8 @@ from platform import python_version
 from pyrogram import filters, errors
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from nana import setbot, app, USERBOT_VERSION, ASSISTANT_VERSION, DB_AVAILABLE, HEROKU_API, Owner
-from nana.__main__ import reload_userbot, restart_all
+from Dulex import setbot, app, USERBOT_VERSION, ASSISTANT_VERSION, DB_AVAILABLE, HEROKU_API, Owner
+from Dulex.__main__ import reload_userbot, restart_all
 from .theme.theme_helper import get_theme
 
 

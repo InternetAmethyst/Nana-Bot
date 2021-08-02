@@ -1,4 +1,4 @@
-from nana import USERBOT_LOAD, USERBOT_NOLOAD, log
+from Dulex import USERBOT_LOAD, USERBOT_NOLOAD, log
 
 
 def __list_all_modules():

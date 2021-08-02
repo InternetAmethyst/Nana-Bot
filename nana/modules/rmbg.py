@@ -12,10 +12,10 @@ import os
 from pyrogram import filters
 from removebg import RemoveBg
 
-from nana import app, Command, remove_bg_api
-from nana.helpers.PyroHelpers import ReplyCheck
+from Dulex import app, Command, remove_bg_api
+from Dulex.helpers.PyroHelpers import ReplyCheck
 
-DOWN_PATH = 'nana/'
+DOWN_PATH = 'Dulex/'
 
 IMG_PATH = DOWN_PATH + "image.jpg"
 

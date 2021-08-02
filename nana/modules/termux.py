@@ -5,7 +5,7 @@ from asyncio import sleep
 
 from pyrogram import filters
 
-from nana import Command, app, TERMUX_USER
+from Dulex import Command, app, TERMUX_USER
 
 __MODULE__ = "Termux"
 __HELP__ = """
