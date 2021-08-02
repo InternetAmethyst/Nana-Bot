@@ -18,7 +18,7 @@ jobs:
 
         with:
 
-          find: "https://github.com/legenhand/Dulex-Bot"
+          find: "https://github.com/legenhand/Dulex-bot"
 
           replace: "https://github.com/Deulex-Userbot/Deulex"
 
