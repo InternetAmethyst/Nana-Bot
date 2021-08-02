@@ -18,9 +18,9 @@ jobs:
 
         with:
 
-          find: "Nana"
+          find: "https://github.com/legenhand/Dulex-Bot"
 
-          replace: "Dulex"
+          replace: "https://github.com/Deulex-Userbot/Deulex"
 
       - name: Create Pull Request
 
